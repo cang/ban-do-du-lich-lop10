@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Ảnh Sài Gòn xưa</title>
+  <meta name="description" content="Bộ sưu tập ảnh Sài Gòn xưa kèm chú thích, tìm kiếm theo nội dung. Đề tài môn Lịch sử lớp 10.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Lora:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="sai-gon-xua.css">
+</head>
+<body>
+
+  <header class="top">
+    <a class="back" href="index.html">‹ Bản đồ di sản</a>
+    <p class="eyebrow">Tư liệu ảnh · Thành phố Hồ Chí Minh</p>
+    <h1>Sài Gòn xưa</h1>
+    <p class="lede">Ảnh tư liệu về đời sống, đường phố và công trình Sài Gòn trước năm 1975.
+      Bấm vào ảnh để xem lớn, dùng phím <kbd>←</kbd> <kbd>→</kbd>, con lăn chuột hoặc vuốt để chuyển ảnh.</p>
+
+    <div class="tools">
+      <input id="search" type="search" placeholder="Tìm theo chú thích, ví dụ: nguyen hue, ben thanh, 1960" autocomplete="off" aria-label="Tìm ảnh theo chú thích">
+      <label class="only-cap"><input type="checkbox" id="onlyCap"> Chỉ ảnh có chú thích</label>
+      <span class="count" id="count" aria-live="polite"></span>
+    </div>
+  </header>
+
+  <main>
+    <div class="grid" id="grid"></div>
+    <p class="empty" id="empty" hidden>Không tìm thấy ảnh nào khớp với từ khóa.</p>
+  </main>
+
+  <footer class="credits" id="credits"></footer>
+
+  <!-- KHUNG XEM ẢNH LỚN -->
+  <dialog class="viewer" id="viewer" aria-label="Xem ảnh">
+    <div class="v-bar">
+      <span class="v-count" id="vCount"></span>
+      <button class="v-btn" id="vClose" aria-label="Đóng (Esc)">×</button>
+    </div>
+    <div class="v-stage" id="vStage">
+      <button class="v-nav prev" id="vPrev" aria-label="Ảnh trước (←)">‹</button>
+      <img id="vImg" alt="">
+      <button class="v-nav next" id="vNext" aria-label="Ảnh sau (→)">›</button>
+    </div>
+    <div class="v-cap">
+      <p id="vText"></p>
+      <p class="v-meta" id="vMeta"></p>
+    </div>
+  </dialog>
+
+  <script src="sai-gon-xua.js"></script>
+</body>
+</html>
