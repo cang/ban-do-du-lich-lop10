@@ -1,0 +1,33 @@
+# Tự động đưa thư mục site/ lên GitHub Pages mỗi khi có thay đổi trên nhánh main.
+# Chỉ thư mục site/ được đưa lên trang web; tai-lieu/, ref/, tools/, data/ không bị đưa lên.
+name: Đưa trang web lên GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths: ["site/**", ".github/workflows/pages.yml"]
+  workflow_dispatch:        # cho phép bấm nút "Run workflow" để chạy tay
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v4
+        with:
+          path: site
+      - id: deployment
+        uses: actions/deploy-pages@v4
