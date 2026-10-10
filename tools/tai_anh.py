@@ -6,6 +6,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 OUT = ROOT / "site" / "images"
 ANH = {  # tên file lưu : tên file trên Commons
  "bao-tang-tphcm-nay.jpg": "Bảo tàng Thành phố Hồ Chí Minh 7.jpg",
+ "bao-tang-tphcm-xua.jpg": "Hôtel du gouverneur de la Cochinchine.jpg",
  "kham-lon-xua.jpg": "Saigon. Maison Centrale.jpg",
  "thu-vien-nay.jpg": "Thư viện Khoa học Tổng hợp TP Hồ Chí Minh.jpg",
  "taberd-xua.jpg": "Saïgon - Institution Taberd.jpg",
