@@ -155,6 +155,7 @@
 ├── style.css           <span class="c">← cách trang trí (màu, chữ, bố cục)</span>
 ├── app.js              <span class="c">← "bộ não": vẽ bản đồ, cắm ghim, đếm di tích, tìm kiếm</span>
 ├── editor.js           <span class="c">← chế độ chỉnh sửa: thêm, sửa, xóa địa điểm</span>
+├── bieu-tuong.js       <span class="c">← hình vẽ biểu tượng loại công trình (bảo tàng, nhà thờ…)</span>
 ├── data/
 │   ├── dia-diem.json      <span class="c">← sổ ghi chép các địa điểm</span>
 │   ├── ranh-gioi.geojson  <span class="c">← đường viền các phường</span>
@@ -195,13 +196,14 @@
     <li>Trình duyệt chỉ tải những ô <b>đang nằm trong màn hình</b>, nên bản đồ vẫn chạy mượt trên điện thoại.</li>
   </ul>
   <p>Các ô gạch lấy từ <b>OpenStreetMap</b>, một "Wikipedia của bản đồ" do tình nguyện viên khắp thế giới cùng vẽ. Trang có thể dùng kiểu trình bày của <b>CARTO</b>, nhẹ nhàng và trang nhã hơn (cần một mã khóa miễn phí, xem <a href="#trien-khai">mục 9</a>). Màu giấy cũ trên bản đồ là do CSS phủ thêm một lớp lọc màu <i>sepia</i>, giống bộ lọc ảnh trên điện thoại.</p>
-  <p>Nút <b>Ảnh vệ tinh</b> ở góc bản đồ đổi nền sang ảnh chụp từ vệ tinh của <b>Esri</b> (miễn phí, không cần mã khóa), hoặc của <b>Google</b> nếu có mã khóa (xem mục 9). Thật ra đây chỉ là đổi sang một bộ "ô gạch" khác: các lớp ranh giới, ghim, cụm vẫn nằm nguyên phía trên.</p>
+  <p>Ở góc bản đồ có cụm nút chọn <b>nền bản đồ</b>: <b>Bản đồ</b> (OpenStreetMap, mặc định), <b>Bản đồ nhạt</b> (CARTO, chỉ hiện khi có mã khóa) và <b>Vệ tinh</b> (ảnh chụp từ vệ tinh của Esri, hoặc của Google nếu có mã khóa, xem mục 9). Thật ra mỗi nút chỉ là đổi sang một bộ "ô gạch" khác: các lớp ranh giới, ghim, cụm vẫn nằm nguyên phía trên.</p>
   <p>Dòng chữ nhỏ ở góc dưới bên phải (<i>© OpenStreetMap</i>, <i>© Esri</i>) là <b>ghi nguồn bắt buộc</b> theo giấy phép dữ liệu bản đồ. Dòng này không được xóa, chỉ thu nhỏ cho gọn.</p>
   <p class="tip">💡 Vì sao không dùng Google Maps? Google Maps đòi đăng ký thẻ thanh toán và có thể tính tiền khi vượt hạn mức. Leaflet và OpenStreetMap thì miễn phí, mã nguồn mở, không lo phát sinh chi phí.</p>
 
   <h3>Ghim và biểu tượng</h3>
-  <p>Mọi di tích dùng chung <b>một ký hiệu</b>: hình ngôi đền có mái tam giác, hàng cột và bệ, giống ký hiệu di tích trên các bản đồ du lịch. Chân bệ đặt đúng vào tọa độ của di tích. Số nhỏ ở góc là số thứ tự, khớp với danh sách bên trái. Hình đền <b>rỗng viền đỏ</b> là di tích nằm ngoài ranh Phường Sài Gòn. Quán ăn là hình tròn xanh có dao nĩa.</p>
-  <p>Các ký hiệu là hình <b>SVG</b>: hình vẽ bằng "công thức" (tam giác, hình chữ nhật, đường cong) chứ không phải ảnh chụp. Vì vậy phóng to bao nhiêu cũng không bị mờ, và đổi màu được bằng CSS. Ví dụ, mái đền chỉ là một tam giác: <code>&lt;path d="M2 12 18 2l16 10Z"/&gt;</code>, nghĩa là đi từ điểm (2, 12) lên đỉnh (18, 2), xuống (34, 12) rồi khép lại.</p>
+  <p>Trên bản đồ, mỗi di tích là một <b>ghim tròn đỏ có số thứ tự</b>, khớp với danh sách bên trái. Ghim <b>rỗng viền đỏ</b> là di tích nằm ngoài ranh Phường Sài Gòn. Quán ăn là ô vuông nhỏ màu xanh. Ghim được giữ đơn giản để bản đồ không rối mắt.</p>
+  <p>Khi mở chi tiết, đầu tên địa điểm có <b>biểu tượng loại công trình</b>: mặt tiền có cột là bảo tàng, nốt nhạc là nhà hát, mỏ neo là xưởng tàu Ba Son… Các biểu tượng là hình <b>SVG</b>: hình vẽ bằng "công thức" (đường thẳng, đường cong, hình tròn) chứ không phải ảnh chụp. Vì vậy phóng to bao nhiêu cũng không bị mờ, và đổi màu được bằng CSS. Ví dụ, mái của biểu tượng bảo tàng chỉ là một tam giác: <code>&lt;path d="M2 9.5 12 3l10 6.5Z"/&gt;</code>, nghĩa là đi từ điểm (2; 9,5) lên đỉnh (12; 3), xuống (22; 9,5) rồi khép lại.</p>
+  <p>Di tích nào chưa có ảnh tự do (có giấy phép rõ ràng) thì khung chi tiết không hiện ô ảnh. Muốn bổ sung ảnh: tự chụp, chép vào thư mục <code>images/</code> rồi ghi tên file vào mục <code>anh</code> (hoặc dùng form chỉnh sửa).</p>
 
   <!-- 6 -->
   <h2 id="du-lieu"><span class="n">6</span>Dữ liệu: tọa độ và ranh giới</h2>
@@ -299,7 +301,7 @@
   <p><b>HTTPS</b> (ổ khóa trên thanh địa chỉ) nghĩa là dữ liệu giữa máy chủ và người xem được mã hóa. GitHub Pages và Netlify bật sẵn HTTPS miễn phí.</p>
 
   <h3>Bật nền bản đồ CARTO (không bắt buộc)</h3>
-  <p>Hiện trang dùng nền OpenStreetMap, không cần đăng ký gì. Muốn dùng nền CARTO đẹp hơn: vào <a href="https://carto.com/basemaps/apikey" target="_blank" rel="noopener">carto.com/basemaps/apikey</a>, nhập email để nhận <b>mã khóa miễn phí</b> (dùng cho học tập được tới 5 triệu lượt/tháng). Sau đó mở <code>app.js</code>, dán mã vào dòng <code>const CARTO_KEY = "";</code> giữa hai dấu nháy.</p>
+  <p>Hiện trang dùng nền OpenStreetMap, không cần đăng ký gì. Muốn có thêm nút nền <b>Bản đồ nhạt</b> (CARTO): vào <a href="https://carto.com/basemaps/apikey" target="_blank" rel="noopener">carto.com/basemaps/apikey</a>, nhập email để nhận <b>mã khóa miễn phí</b> (dùng cho học tập được tới 5 triệu lượt/tháng). Sau đó mở <code>app.js</code>, dán mã vào dòng <code>const CARTO_KEY = "";</code> giữa hai dấu nháy.</p>
 
   <h3>Dùng ảnh vệ tinh Google (không bắt buộc)</h3>
   <p>Mặc định nút <b>Ảnh vệ tinh</b> dùng ảnh của Esri. Muốn dùng ảnh Google cho nét hơn thì phải qua dịch vụ chính thức <b>Google Map Tiles API</b>. Không được chép thẳng đường link ảnh của Google, vì làm vậy vi phạm điều khoản sử dụng.</p>

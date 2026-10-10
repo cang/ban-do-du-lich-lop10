@@ -187,6 +187,7 @@ a { color: var(--son); }
 /* Phủ tông giấy cũ (sepia) lên nền bản đồ CARTO cho hợp phong cách di sản */
 .leaflet-tile-pane { filter: sepia(.35) saturate(.75) brightness(1.02) contrast(.97); }
 .nen-osm .leaflet-tile-pane { filter: grayscale(.75) sepia(.45) brightness(1.06) contrast(.9); }
+.nen-carto .leaflet-tile-pane { filter: sepia(.15) saturate(.95) contrast(1.05); }   /* CARTO vốn nhạt: chỉ thêm chút tông ấm */
 .leaflet-container { font-family: var(--sans); }
 .nen-ve-tinh .leaflet-tile-pane { filter: none; }   /* ảnh vệ tinh giữ màu thật */
 /* Dòng ghi nguồn bản đồ: bắt buộc theo giấy phép, nên chỉ thu nhỏ và làm mờ */
@@ -202,17 +203,25 @@ a { color: var(--son); }
 .nen-ve-tinh .leaflet-control-attribution { opacity: 1; font-size: 10px; background: rgba(251, 248, 242, .9) !important; }
 .leaflet-control-attribution a { color: inherit; text-decoration: none; }
 
-/* Nút chuyển nền bản đồ ⇄ ảnh vệ tinh */
-.map-btn {
+/* Cụm nút chọn nền bản đồ: Bản đồ · Bản đồ nhạt · Vệ tinh */
+.base-switch {
   position: absolute; left: 16px; bottom: 72px; z-index: 900;
-  display: inline-flex; align-items: center; gap: 8px;
-  padding: 8px 14px;
+  display: inline-flex; align-items: center; gap: 2px;
+  padding: 4px 4px 4px 12px;
   border: 1px solid var(--line); border-radius: 10px;
-  background: var(--card); color: var(--ink);
-  font-size: 13px; font-weight: 500;
+  background: var(--card); color: var(--ink-2);
   box-shadow: 0 4px 16px rgba(40, 28, 15, .14);
 }
-.map-btn:hover { border-color: var(--ink-3); }
+.base-switch svg { margin-right: 6px; }
+.base-switch button {
+  border: 0; border-radius: 7px;
+  padding: 6px 11px;
+  background: transparent; color: var(--ink-2);
+  font-size: 13px; font-weight: 500;
+  white-space: nowrap;
+}
+.base-switch button:hover { background: var(--paper-2); color: var(--ink); }
+.base-switch button.is-on { background: var(--ink); color: var(--paper); }
 .leaflet-bar a { background: var(--card); color: var(--ink); border-color: var(--line); }
 
 .legend {
@@ -396,7 +405,9 @@ a { color: var(--son); }
   .map-wrap { position: fixed; inset: 0; height: auto; }
   .legend { top: 64px; bottom: auto; left: 12px; font-size: 11px; padding: 5px 10px; }
   .map-search { top: 12px; left: 12px; right: 12px; width: auto; }
-  .map-btn { top: 62px; bottom: auto; left: auto; right: 12px; padding: 6px 10px; font-size: 12px; }
+  .base-switch { top: 100px; bottom: auto; left: 12px; padding: 3px; }
+  .base-switch svg { display: none; }
+  .base-switch button { padding: 5px 9px; font-size: 12px; }
   .map-search input { font-size: 16px; }   /* 16px để iPhone không tự phóng to khi gõ */
   .leaflet-control-zoom { display: none; }  /* điện thoại dùng 2 ngón tay để phóng to */
 

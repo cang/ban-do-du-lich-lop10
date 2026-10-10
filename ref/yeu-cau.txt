@@ -8,3 +8,8 @@ Yêu cầu:
 - Nội dung bao gồm: mô tả ngắn, ảnh chụp hiện tại và ảnh xưa (nếu có), chú thích lịch sử, ý nghĩa, các sự kiện, nhân vật liên quan đến cách mạng.
 - Dữ liệu đầu vào là text từ file tôi đính kèm (`d:/PhucLam/du-an-lich-su-lop-10/ref/map.md`).
 - Yêu cầu tối ưu cho máy tính (desktop) nhưng phải hiển thị tốt trên điện thoại (mobile responsive).
+
+
+carto key
+cb1_4g1n_1_d062cb4a59b8fad6d39dd8c3
+

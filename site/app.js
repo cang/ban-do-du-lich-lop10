@@ -73,8 +73,8 @@ async function taiDuLieu() {
 
 /* ---------- BƯỚC 2: BẢN ĐỒ NỀN ---------- */
 // Mã khóa CARTO: đăng ký miễn phí bằng email tại https://carto.com/basemaps/apikey
-// rồi dán vào giữa hai dấu nháy. Để trống thì trang dùng nền OpenStreetMap.
-const CARTO_KEY = "";
+// rồi dán vào giữa hai dấu nháy. Có mã thì hiện thêm nút "Bản đồ nhạt"; để trống thì bỏ nút này.
+const CARTO_KEY = "cb1_4g1n_1_d062cb4a59b8fad6d39dd8c3";
 
 function veBanDoNen() {
   map = L.map("map", { zoomControl: false, minZoom: 13, maxZoom: 19 })
@@ -88,28 +88,26 @@ function veBanDoNen() {
   map.attributionControl.setPrefix(false);
 
   const osm = '© <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>';
+  // Nền "Bản đồ" (mặc định): OpenStreetMap gốc – không cần mã khóa; CSS phủ tông giấy cũ cho đỡ sặc sỡ
+  nen.osm = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19, attribution: osm });
+  // Nền "Bản đồ nhạt": CARTO Voyager – chỉ có khi đã dán mã khóa CARTO
   if (CARTO_KEY) {
-    // Nền CARTO Voyager (dữ liệu OpenStreetMap, trình bày nhẹ nhàng, trang nhã)
-    nenBanDo = L.tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png?key=${CARTO_KEY}`, {
+    nen.carto = L.tileLayer(`https://{s}.basemaps.cartocdn.com/rastertiles/voyager/{z}/{x}/{y}{r}.png?key=${CARTO_KEY}`, {
       maxZoom: 19, subdomains: "abcd",
       attribution: `${osm} © <a href="https://carto.com/attributions">CARTO</a>`,
     });
-  } else {
-    // Nền OpenStreetMap gốc – không cần mã khóa; CSS phủ tông giấy cũ cho đỡ sặc sỡ
-    document.body.classList.add("nen-osm");
-    nenBanDo = L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", { maxZoom: 19, attribution: osm });
   }
-  nenBanDo.addTo(map);
-
-  // Ảnh vệ tinh của Esri – miễn phí, không cần mã khóa, phải ghi nguồn
-  nenVeTinh = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
+  // Nền "Vệ tinh": ảnh của Esri – miễn phí, không cần mã khóa, phải ghi nguồn
+  nen["ve-tinh"] = L.tileLayer("https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}", {
     maxZoom: 19,
     attribution: "Ảnh vệ tinh © Esri, Maxar, Earthstar Geographics",
   });
   if (GOOGLE_MAPS_KEY) taoNenGoogle();   // có mã khóa Google thì thay ảnh Esri bằng ảnh Google
 }
 
-let nenBanDo, nenVeTinh, manChe;   // nền bản đồ thường, nền ảnh vệ tinh, tấm màn phủ ngoài phường
+const nen = {};        // các nền bản đồ: osm, carto, ve-tinh
+let nenDangDung;       // mã nền đang hiện
+let manChe;            // tấm màn phủ ngoài phường
 
 /* ---------- ẢNH VỆ TINH GOOGLE (không bắt buộc) ----------
    Dùng Google Map Tiles API – cách hợp lệ duy nhất để lấy ảnh Google ngoài Google Maps.
@@ -150,24 +148,31 @@ async function taoNenGoogle() {
     lopGoogle.on("add", capNhatBanQuyen);
 
     // Thay ảnh Esri bằng ảnh Google (kể cả khi người xem đang bật ảnh vệ tinh)
-    const dangXemVeTinh = map.hasLayer(nenVeTinh);
-    nenVeTinh.remove();
-    nenVeTinh = lopGoogle;
-    if (dangXemVeTinh) nenVeTinh.addTo(map);
+    const dangXemVeTinh = nenDangDung === "ve-tinh";
+    nen["ve-tinh"].remove();
+    nen["ve-tinh"] = lopGoogle;
+    if (dangXemVeTinh) lopGoogle.addTo(map);
   } catch (loi) {
     console.warn("Không dùng được ảnh vệ tinh Google, giữ ảnh Esri:", loi);
   }
 }
 
-// Chuyển qua lại giữa bản đồ thường và ảnh vệ tinh
-function doiNen() {
-  const veTinh = !map.hasLayer(nenVeTinh);
-  if (veTinh) { nenBanDo.remove(); nenVeTinh.addTo(map); }
-  else { nenVeTinh.remove(); nenBanDo.addTo(map); }
-  document.body.classList.toggle("nen-ve-tinh", veTinh);
-  // Trên ảnh vệ tinh: tấm màn ngoài phường đổi sang màu tối cho ảnh không bị bạc màu
-  manChe.setStyle(veTinh ? { fillColor: "#14100c", fillOpacity: 0.45 } : { fillColor: "#f4efe6", fillOpacity: 0.55 });
-  $("btnNenChu").textContent = veTinh ? "Bản đồ" : "Ảnh vệ tinh";
+// Màu tấm màn phủ ngoài phường, tùy theo nền
+const KIEU_MAN_CHE = {
+  "osm":     { fillColor: "#f4efe6", fillOpacity: 0.55 },
+  "carto":   { fillColor: "#f4efe6", fillOpacity: 0.3 },    // CARTO vốn đã nhạt nên phủ mỏng hơn
+  "ve-tinh": { fillColor: "#14100c", fillOpacity: 0.45 },   // ảnh vệ tinh: phủ tối cho ảnh không bị bạc màu
+};
+
+// Đổi nền bản đồ: gỡ nền cũ, gắn nền mới, đổi bộ lọc màu (CSS) và tấm màn cho hợp
+function chonNen(ma) {
+  if (!nen[ma]) return;
+  Object.values(nen).forEach((lop) => lop.remove());
+  nen[ma].addTo(map);
+  nenDangDung = ma;
+  Object.keys(KIEU_MAN_CHE).forEach((m) => document.body.classList.toggle(`nen-${m}`, m === ma));
+  manChe?.setStyle(KIEU_MAN_CHE[ma]);
+  document.querySelectorAll("[data-nen]").forEach((nut) => nut.classList.toggle("is-on", nut.dataset.nen === ma));
 }
 
 /* ---------- BƯỚC 3: VẼ RANH GIỚI ---------- */
@@ -187,7 +192,7 @@ function veRanhGioi(ranhGioi) {
   const cacLo = phuongChinh.geometry.coordinates.map((daGiac) =>
     daGiac[0].map(([kinhDo, viDo]) => [viDo, kinhDo]));
   manChe = L.polygon([theGioi, ...cacLo], {
-    interactive: false, stroke: false, fillColor: "#f4efe6", fillOpacity: 0.55,
+    interactive: false, stroke: false, ...KIEU_MAN_CHE[nenDangDung],
   }).addTo(map);
 
   // Đường viền Phường Sài Gòn
@@ -196,7 +201,11 @@ function veRanhGioi(ranhGioi) {
     style: { color: "#8f2d1f", weight: 2.5, fill: false },
   }).addTo(map);
 
-  map.fitBounds(vien.getBounds(), { padding: [30, 30] });
+  // Phóng vừa khít phường. Màn hình máy tính: tối thiểu mức 15
+  // (ở mức 14 nền CARTO hiện chữ to "THÀNH PHỐ HỒ CHÍ MINH" đè lên các ghim)
+  const khung = vien.getBounds();
+  const zoomVua = map.getBoundsZoom(khung, false, L.point(60, 60));
+  map.setView(khung.getCenter(), isMobile() ? zoomVua : Math.max(zoomVua, 15), { animate: false });
   return phuongChinh;
 }
 
@@ -509,6 +518,7 @@ function dongBoNutLoc() {
 /* ---------- KHỞI ĐỘNG ---------- */
 async function khoiDong() {
   veBanDoNen();
+  chonNen("osm");   // nền mặc định
   const { duLieu, ranhGioi, nguonAnh } = await taiDuLieu();
   state.duLieu = docBanSua() ?? duLieu;   // nếu máy này có bản đã chỉnh sửa thì dùng bản đó (xem editor.js)
   state.ranhGioi = ranhGioi;
@@ -545,7 +555,11 @@ async function khoiDong() {
   $("btnPrev").addEventListener("click", () => chuyen(-1));
   $("btnNext").addEventListener("click", () => chuyen(1));
   $("sheetHandle").addEventListener("click", () => $("sidebar").classList.toggle("is-expanded"));
-  $("btnNen").addEventListener("click", doiNen);
+  $("baseSwitch").addEventListener("click", (e) => {
+    const nut = e.target.closest("[data-nen]");
+    if (nut) chonNen(nut.dataset.nen);
+  });
+  if (!nen.carto) document.querySelector('[data-nen="carto"]').remove();   // chưa có mã khóa CARTO thì bỏ nút
 
   // Ô tìm kiếm trên bản đồ: lọc ngay khi gõ, Enter để mở kết quả đầu tiên, Esc để xóa
   const oTim = $("search");
