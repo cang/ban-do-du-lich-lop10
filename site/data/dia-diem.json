@@ -249,7 +249,9 @@
       "nam": "Sau 1975",
       "tom_tat": "Mảng xanh nằm giữa Nhà thờ Đức Bà và Dinh Độc Lập. Tên công viên ghi dấu ngày 30/4/1975, ngày giải phóng miền Nam, thống nhất đất nước. Đây là điểm dừng chân quen thuộc gắn với văn hóa cà phê bệt Sài Gòn.",
       "y_nghia": "Tên gọi nhắc nhớ sự kiện lịch sử đã diễn ra ngay cuối con đường này.",
-      "anh": []
+      "anh": [
+        { "file": "cong-vien-30-4-nay.jpg", "loai": "nay", "chu_thich": "Hàng cây cổ thụ trong Công viên 30/4" }
+      ]
     },
     {
       "id": "dinh-doc-lap",
@@ -371,7 +373,8 @@
       "tom_tat": "Dải công viên ven sông Sài Gòn nối liền với Ba Son. Nơi đây gắn với lịch sử giao thương và quốc phòng đường thủy của thành phố.",
       "y_nghia": "Sài Gòn lớn lên nhờ dòng sông. Bến Bạch Đằng là nơi thấy rõ nhất mối gắn bó đó.",
       "anh": [
-        { "file": "ben-bach-dang-xua.jpg", "loai": "xua", "chu_thich": "Bến cảng ven sông Sài Gòn thập niên 1920" }
+        { "file": "ben-bach-dang-xua.jpg", "loai": "xua", "chu_thich": "Bến cảng ven sông Sài Gòn thập niên 1920" },
+        { "file": "ben-bach-dang-nay.jpg", "loai": "nay", "chu_thich": "Công viên Bến Bạch Đằng ngày nay" }
       ]
     },
     {
