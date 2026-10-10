@@ -246,6 +246,11 @@
           "file": "chi-lang-nay.jpg",
           "loai": "nay",
           "chu_thich": "Công viên Chi Lăng ngày nay"
+        },
+        {
+          "file": "cong-vien-chi-lang-xua.jpg",
+          "loai": "xua",
+          "chu_thich": "Đường Catinat (nay là Đồng Khởi) thời Pháp thuộc, công viên nằm ven con đường này"
         }
       ]
     },
@@ -440,7 +445,18 @@
       "nam": "2016",
       "tom_tat": "Con đường lâu đời bên hông Bưu điện, từ năm 2016 trở thành đường sách: không gian văn hóa đọc với nhiều gian hàng sách và quán cà phê.",
       "y_nghia": "Ví dụ về cách một con phố cũ được làm mới thành không gian văn hóa cho cộng đồng.",
-      "anh": []
+      "anh": [
+        {
+          "file": "duong-sach-xua.jpg",
+          "loai": "xua",
+          "chu_thich": "Bưu điện Sài Gòn năm 1930 – đường sách ngày nay nằm ngay bên hông tòa nhà"
+        },
+        {
+          "file": "duong-sach-nay.jpg",
+          "loai": "nay",
+          "chu_thich": "Đường sách Nguyễn Văn Bình năm 2023"
+        }
+      ]
     },
     {
       "id": "cong-vien-30-4",
@@ -461,6 +477,11 @@
           "file": "cong-vien-30-4-nay.jpg",
           "loai": "nay",
           "chu_thich": "Hàng cây cổ thụ trong Công viên 30/4"
+        },
+        {
+          "file": "cong-vien-30-4-xua.jpg",
+          "loai": "xua",
+          "chu_thich": "Nhìn từ Dinh Norodom về phía Nhà thờ Đức Bà, thập niên 1920 – nay là Công viên 30/4"
         }
       ]
     },
@@ -548,6 +569,11 @@
           "file": "cho-ben-thanh-nay.jpg",
           "loai": "nay",
           "chu_thich": "Chợ Bến Thành ngày nay"
+        },
+        {
+          "file": "cho-ben-thanh-xua.jpg",
+          "loai": "xua",
+          "chu_thich": "Chợ Bến Thành những năm 1920"
         }
       ]
     },

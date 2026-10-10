@@ -153,5 +153,30 @@
         "tac_gia": "Bảo tàng Tôn Đức Thắng",
         "giay_phep": "bản quyền của bảo tàng, dùng có ghi nguồn",
         "trang": "https://baotangtonducthang.vn/tiep-nhan-trao-tang-hien-vat-tu-lieu-lien-quan-den-chu-tich-ton-duc-thang-nhan-tuong-niem-36-nam-ngay-mat-chu-tich-ton-duc-thang-3031980-3032016"
+    },
+    "cong-vien-chi-lang-xua.jpg": {
+        "tac_gia": "Bưu thiếp cũ, qua dobuon.vn (Nhan's Blog)",
+        "giay_phep": "không rõ bản quyền, dùng có ghi nguồn",
+        "trang": "https://dobuon.vn/wp-content/uploads/2024/08/cong-vien-chi-lang-3.jpg"
+    },
+    "cho-ben-thanh-xua.jpg": {
+        "tac_gia": "Ashui.com",
+        "giay_phep": "dùng có ghi nguồn",
+        "trang": "https://ashui.com/hinh-anh-cho-ben-thanh-gan-100-nam-truoc/"
+    },
+    "cong-vien-30-4-xua.jpg": {
+        "tac_gia": "Haut commissariat de France pour l'Indochine",
+        "giay_phep": "Public domain",
+        "trang": "https://commons.wikimedia.org/wiki/File:Boulevard_Norodom,_Sa%C3%AFgon_(PV0017528).jpg"
+    },
+    "duong-sach-xua.jpg": {
+        "tac_gia": "Indochine française. Aéronautique militaire",
+        "giay_phep": "Public domain",
+        "trang": "https://commons.wikimedia.org/wiki/File:Saigon_--_H%C3%B4tel_des_postes.jpg"
+    },
+    "duong-sach-nay.jpg": {
+        "tac_gia": "Kevin Rutherford from United States",
+        "giay_phep": "CC BY-SA 2.0",
+        "trang": "https://commons.wikimedia.org/wiki/File:Nguyen_Van_Binh_Street_(52681309899).jpg"
     }
 }
