@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Bản đồ di sản Phường Sài Gòn</title>
+  <meta name="description" content="Bản đồ cho khách du lịch: các di tích lịch sử trong Phường Sài Gòn, TP.HCM. Đề tài môn Lịch sử lớp 10.">
+
+  <!-- Phông chữ: Lora (tiêu đề, kiểu sách cổ) + Be Vietnam Pro (nội dung, dễ đọc) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Lora:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+
+  <!-- Thư viện bản đồ Leaflet -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- CỘT TRÁI: tiêu đề, thống kê phường, danh sách địa điểm -->
+  <aside class="sidebar" id="sidebar">
+    <button class="sheet-handle" id="sheetHandle" aria-label="Mở / thu gọn danh sách"></button>
+
+    <!-- Thanh công cụ chỉnh sửa: chỉ hiện sau khi đăng nhập -->
+    <div class="edit-bar" id="editBar" hidden>
+      <p><b>Chế độ chỉnh sửa</b> · thay đổi chỉ lưu trên máy này</p>
+      <div class="edit-bar-btns">
+        <button class="btn primary" id="btnAdd">+ Thêm địa điểm</button>
+        <button class="btn" id="btnDownload">Tải file JSON</button>
+        <button class="btn" id="btnLogout">Đăng xuất</button>
+      </div>
+    </div>
+    <p class="local-note" id="localNote" hidden>
+      Bản đồ đang dùng dữ liệu đã chỉnh sửa trên máy này.
+      <button class="linklike" id="btnRestore">Khôi phục bản gốc</button>
+    </p>
+
+    <header class="brand">
+      <p class="eyebrow">Bản đồ di sản · Thành phố Hồ Chí Minh</p>
+      <h1>Phường Sài Gòn</h1>
+      <p class="lede" id="phuongGioiThieu"></p>
+    </header>
+
+    <dl class="stats" id="stats">
+      <div><dt>Diện tích</dt><dd id="statDienTich">–</dd></div>
+      <div><dt>Dân số</dt><dd id="statDanSo">–</dd></div>
+      <div><dt>Di tích trong phường</dt><dd id="statSoDiTich">–</dd></div>
+    </dl>
+
+    <div class="filters" role="group" aria-label="Lớp bản đồ">
+      <button class="chip is-on" data-loai="di-tich"><span class="dot dot-ditich"></span>Di tích</button>
+      <button class="chip is-on" data-lop="cum"><span class="dot dot-cum"></span>Cụm tham quan</button>
+      <button class="chip" data-loai="am-thuc"><span class="dot dot-amthuc"></span>Ẩm thực</button>
+    </div>
+
+    <nav class="list" id="list" aria-label="Danh sách địa điểm"></nav>
+
+    <footer class="credits">
+      Đề tài môn Lịch sử lớp 10 ·
+      <button class="linklike" id="btnLogin">Đăng nhập chỉnh sửa</button><br>
+      Ảnh: Wikimedia Commons · Ranh giới: danh mục địa giới hành chính TP.HCM 2025
+    </footer>
+  </aside>
+
+  <!-- BẢN ĐỒ -->
+  <main class="map-wrap">
+    <div id="map" aria-label="Bản đồ"></div>
+
+    <!-- Ô tìm kiếm nổi trên bản đồ -->
+    <div class="map-search">
+      <input id="search" type="search" placeholder="Tìm địa điểm, ví dụ: dinh doc lap" autocomplete="off" aria-label="Tìm địa điểm theo tên">
+      <div class="search-results" id="searchResults" hidden></div>
+    </div>
+
+    <!-- Nút chuyển nền: bản đồ ⇄ ảnh vệ tinh -->
+    <button class="map-btn" id="btnNen" aria-label="Chuyển nền bản đồ">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true">
+        <path d="M12 3 2 8l10 5 10-5-10-5Z"/><path d="m2 13 10 5 10-5"/><path d="m2 17.5 10 5 10-5" opacity=".5"/>
+      </svg>
+      <span id="btnNenChu">Ảnh vệ tinh</span>
+    </button>
+
+    <div class="legend">
+      <span><i class="lg-ranh"></i>Ranh Phường Sài Gòn</span>
+      <span><i class="lg-lancan"></i>Phường lân cận</span>
+    </div>
+
+    <div class="pick-hint" id="pickHint" hidden>
+      Bấm lên bản đồ để chọn vị trí
+      <button class="btn" id="btnPickCancel">Hủy</button>
+    </div>
+  </main>
+
+  <!-- KHUNG CHI TIẾT: hiện ra khi bấm vào một địa điểm -->
+  <article class="detail" id="detail" aria-hidden="true" tabindex="-1">
+    <div class="detail-bar">
+      <button class="icon-btn" id="btnPrev" aria-label="Địa điểm trước">‹</button>
+      <span class="detail-count" id="detailCount"></span>
+      <button class="icon-btn" id="btnNext" aria-label="Địa điểm sau">›</button>
+      <button class="icon-btn close" id="btnClose" aria-label="Đóng">×</button>
+    </div>
+    <div class="detail-body" id="detailBody"></div>
+  </article>
+
+  <!-- HỘP ĐĂNG NHẬP (minh họa – xem giải thích trong editor.js) -->
+  <dialog id="loginDialog" class="dlg dlg-sm">
+    <form method="dialog" id="loginForm">
+      <h2>Đăng nhập chỉnh sửa</h2>
+      <label>Tên đăng nhập <input name="ten" autocomplete="username"></label>
+      <label>Mật khẩu <input name="matKhau" type="password" autocomplete="current-password"></label>
+      <p class="form-error" id="loginError" hidden>Sai tên đăng nhập hoặc mật khẩu.</p>
+      <p class="form-note">Đây là đăng nhập minh họa, không phải bảo mật thật. Chỉnh sửa chỉ lưu trên máy đang dùng.</p>
+      <div class="dlg-btns">
+        <button class="btn" value="huy" formnovalidate>Hủy</button>
+        <button class="btn primary" value="ok">Đăng nhập</button>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- FORM THÊM / SỬA ĐỊA ĐIỂM -->
+  <dialog id="editDialog" class="dlg">
+    <form method="dialog" id="editForm">
+      <h2 id="editTitle">Thêm địa điểm</h2>
+      <div class="form-grid">
+        <label class="span-2">Tên địa điểm * <input name="ten"></label>
+        <label class="span-2">Tên khác / tên cũ <input name="ten_khac"></label>
+        <label>Loại
+          <select name="loai"><option value="di-tich">Di tích</option><option value="am-thuc">Ẩm thực</option></select>
+        </label>
+        <label>Cụm <select name="cum"></select></label>
+        <label class="span-2">Biểu tượng loại công trình <select name="bieu_tuong"></select></label>
+        <label class="span-2">Địa chỉ <input name="dia_chi"></label>
+        <label>Vĩ độ * <input name="vi_do" inputmode="decimal"></label>
+        <label>Kinh độ * <input name="kinh_do" inputmode="decimal"></label>
+        <div class="span-2"><button type="button" class="btn" id="btnPick">📍 Chọn vị trí trên bản đồ</button></div>
+        <label>Năm / giai đoạn <input name="nam" placeholder="1898 – 1909"></label>
+        <label>Xếp hạng di tích <input name="xep_hang" placeholder="Di tích quốc gia"></label>
+        <label class="span-2">Tóm tắt <textarea name="tom_tat" rows="3"></textarea></label>
+        <label class="span-2">Dòng thời gian <small>mỗi dòng: mốc | nội dung</small>
+          <textarea name="lich_su" rows="4" placeholder="1/1/1900 | Khánh thành"></textarea></label>
+        <label class="span-2">Nhân vật liên quan <small>mỗi dòng: tên | vai trò</small>
+          <textarea name="nhan_vat" rows="2" placeholder="Paul Gardès | Kiến trúc sư"></textarea></label>
+        <label class="span-2">Ý nghĩa <textarea name="y_nghia" rows="2"></textarea></label>
+        <label class="span-2">Ghi chú thêm <textarea name="ghi_chu" rows="2"></textarea></label>
+        <label class="span-2">Ảnh <small>mỗi dòng: tên file trong images/ hoặc link ảnh | xua hoặc nay | chú thích</small>
+          <textarea name="anh" rows="2" placeholder="nha-hat-nay.jpg | nay | Nhà hát ngày nay"></textarea></label>
+        <label>Giờ mở cửa <input name="gio_mo"></label>
+        <label>Giá tham khảo <input name="gia"></label>
+      </div>
+      <div class="dlg-btns">
+        <button class="btn" value="huy" formnovalidate>Hủy</button>
+        <button class="btn primary" value="ok">Lưu</button>
+      </div>
+    </form>
+  </dialog>
+
+  <script src="bieu-tuong.js"></script>
+  <script src="editor.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>

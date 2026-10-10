@@ -1,0 +1,10 @@
+Con tôi học lớp 10 môn Sử, Có nhu cầu làm 1 web site nhỏ để trình bày 1 bài thuyết trình môn sử với chủ đề "Bản đồ Cho khách du lịch". 
+
+Sử dụng kiến trúc hiện đại, đẹp, dễ dùng, có thể chạy trên máy tính và điện thoại, có thể mở rộng để thêm nhiều địa điểm khác. 
+
+Yêu cầu:
+- Trình bày trên bảng đồ số (Google Map hoặc bản đồ dạng raster/vector tùy ý, miễn đẹp và mượt). Tương tác click chọn điểm trên bản đồ sẽ show pop-up/panel thông tin.
+- Giao diện sạch, tối giản, ưu tiên trải nghiệm đọc/xem, đẹp mắt như website của bảo tàng hoặc các trang kiến trúc – di sản. Có thể dùng các thư viện map như Leaflet/Mapbox hoặc custom tile layer cho aesthetic. Về theme màu có thể tham khảo theme màu của các trang web bảo tàng/di sản nổi tiếng trên thế giới (trang nhã, hiện đại).
+- Nội dung bao gồm: mô tả ngắn, ảnh chụp hiện tại và ảnh xưa (nếu có), chú thích lịch sử, ý nghĩa, các sự kiện, nhân vật liên quan đến cách mạng.
+- Dữ liệu đầu vào là text từ file tôi đính kèm (`d:/PhucLam/du-an-lich-su-lop-10/ref/map.md`).
+- Yêu cầu tối ưu cho máy tính (desktop) nhưng phải hiển thị tốt trên điện thoại (mobile responsive).

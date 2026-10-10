@@ -1,0 +1,415 @@
+{
+  "phuong": {
+    "ma": "26740",
+    "ten": "Phường Sài Gòn",
+    "gioi_thieu": "Phường Sài Gòn được thành lập ngày 1/7/2025, khi Thành phố Hồ Chí Minh bỏ cấp quận và sắp xếp lại các phường. Phường gồm toàn bộ phường Bến Nghé cũ cùng một phần phường Đa Kao và Nguyễn Thái Bình (Quận 1 cũ). Đây là vùng lõi của Sài Gòn từ thời Pháp thuộc, nơi tập trung dày đặc các công trình kiến trúc và di tích lịch sử."
+  },
+  "cum": {
+    "ly-tu-trong": "Cụm Lý Tự Trọng",
+    "dong-khoi": "Cụm Lê Thánh Tôn – Đồng Khởi – Nguyễn Huệ",
+    "nha-tho": "Cụm Nhà thờ Đức Bà – Bưu điện – Dinh Độc Lập",
+    "ben-thanh": "Cụm Bến Thành",
+    "ba-son": "Cụm Ba Son – sông Sài Gòn – Thảo Cầm Viên",
+    "am-thuc": "Ẩm thực quanh khu trung tâm"
+  },
+  "dia_diem": [
+    {
+      "id": "bao-tang-tphcm",
+      "loai": "di-tich",
+      "bieu_tuong": "bao-tang",
+      "cum": "ly-tu-trong",
+      "ten": "Bảo tàng Thành phố Hồ Chí Minh",
+      "ten_khac": "Dinh Gia Long",
+      "dia_chi": "65 Lý Tự Trọng",
+      "toa_do": [10.77611, 106.69972],
+      "nam": "1885 – 1890",
+      "tom_tat": "Tòa nhà Tân cổ điển do kiến trúc sư Pháp Alfred Foulhoux thiết kế. Ban đầu định làm Bảo tàng Thương mại, sau thành Dinh Phó Toàn quyền Nam Kỳ (Dinh Gia Long). Hơn một thế kỷ, tòa nhà đổi chủ và đổi tên nhiều lần, chứng kiến những biến động lớn của Sài Gòn.",
+      "lich_su": [
+        { "moc": "1885 – 1890", "noi_dung": "Khởi công và hoàn thành theo thiết kế của KTS Alfred Foulhoux. Tòa nhà được dùng làm Dinh Phó Toàn quyền Nam Kỳ." },
+        { "moc": "1945 – 1975", "noi_dung": "Lần lượt là Dinh Nam Sứ, Dinh Thống đốc, Dinh Thủ tướng, Dinh Quốc phó và trụ sở Tối cao Pháp viện Việt Nam Cộng hòa." },
+        { "moc": "1962 – 1963", "noi_dung": "Sau khi Dinh Độc Lập bị ném bom (27/2/1962), Ngô Đình Diệm chuyển về đây làm việc. Hệ thống hầm ngầm kiên cố do KTS Ngô Viết Thụ thiết kế được xây dưới lòng dinh." },
+        { "moc": "1/11/1963", "noi_dung": "Cuộc đảo chính lật đổ chính quyền Ngô Đình Diệm. Anh em Diệm – Nhu rời Dinh Gia Long trong đêm." },
+        { "moc": "12/8/1978", "noi_dung": "Trở thành Bảo tàng Cách mạng Thành phố Hồ Chí Minh." },
+        { "moc": "13/12/1999", "noi_dung": "Đổi tên thành Bảo tàng Thành phố Hồ Chí Minh." }
+      ],
+      "nhan_vat": [
+        { "ten": "Alfred Foulhoux", "vai_tro": "Kiến trúc sư người Pháp thiết kế tòa nhà" },
+        { "ten": "Ngô Viết Thụ", "vai_tro": "Kiến trúc sư thiết kế hệ thống hầm ngầm (1962 – 1963)" }
+      ],
+      "y_nghia": "Là một bảo tàng sống về chính Sài Gòn. Trong tòa nhà trưng bày lịch sử đấu tranh cách mạng, thương cảng, công nghiệp, văn hóa thành phố, và cả hệ thống hầm ngầm đặc biệt.",
+      "anh": [
+        { "file": "bao-tang-tphcm-nay.jpg", "loai": "nay", "chu_thich": "Mặt tiền bảo tàng ngày nay" }
+      ]
+    },
+    {
+      "id": "kham-lon",
+      "loai": "di-tich",
+      "bieu_tuong": "sach",
+      "cum": "ly-tu-trong",
+      "ten": "Thư viện Khoa học Tổng hợp",
+      "ten_khac": "Nền cũ Khám Lớn Sài Gòn",
+      "dia_chi": "69 Lý Tự Trọng",
+      "toa_do": [10.774934, 106.698956],
+      "nam": "1865",
+      "tom_tat": "Nơi đây từng là Khám Lớn Sài Gòn (Maison Centrale), nhà tù do Pháp xây năm 1865 để giam giữ nhiều nhà yêu nước và chiến sĩ cách mạng. Thư viện hiện nay được xây trên nền đất cũ trong khoảng 1960 – 1972, theo phong cách kiến trúc hiện đại nhiệt đới.",
+      "lich_su": [
+        { "moc": "1865", "noi_dung": "Người Pháp xây Khám Lớn Sài Gòn (Prison Centrale)." },
+        { "moc": "21/11/1931", "noi_dung": "Người thanh niên cộng sản Lý Tự Trọng hy sinh tại Khám Lớn khi mới 17 tuổi. Con đường trước cửa ngày nay mang tên anh." },
+        { "moc": "1960 – 1972", "noi_dung": "Khám Lớn bị phá bỏ. Thư viện được xây trên nền đất cũ." }
+      ],
+      "nhan_vat": [
+        { "ten": "Lý Tự Trọng (1914 – 1931)", "vai_tro": "Chiến sĩ cách mạng, bị giam và hy sinh tại Khám Lớn" }
+      ],
+      "y_nghia": "Từ nơi giam cầm trở thành nơi mở mang tri thức. Lịch sử của khu đất là biểu tượng cho sự thay đổi của thành phố.",
+      "anh": [
+        { "file": "kham-lon-xua.jpg", "loai": "xua", "chu_thich": "Khám Lớn Sài Gòn thời Pháp thuộc" },
+        { "file": "thu-vien-nay.jpg", "loai": "nay", "chu_thich": "Thư viện Khoa học Tổng hợp ngày nay" }
+      ]
+    },
+    {
+      "id": "tran-dai-nghia",
+      "loai": "di-tich",
+      "bieu_tuong": "truong-hoc",
+      "cum": "ly-tu-trong",
+      "ten": "Trường THCS & THPT Trần Đại Nghĩa",
+      "ten_khac": "Trường La San Taberd",
+      "dia_chi": "20 Lý Tự Trọng",
+      "toa_do": [10.7793245, 106.7012269],
+      "nam": "1874 – 1887",
+      "xep_hang": "Di tích cấp thành phố",
+      "tom_tat": "Tiền thân là Trường Trung học La San Taberd, trường dòng nam sinh đầu tiên ở Sài Gòn. Kiến trúc Pháp cổ kết hợp kết cấu truyền thống. Trường mang tên giáo sư, kỹ sư Trần Đại Nghĩa, người đặt nền móng cho ngành quân giới Việt Nam.",
+      "lich_su": [
+        { "moc": "1874", "noi_dung": "Khởi công xây dựng." },
+        { "moc": "1887", "noi_dung": "Hoàn thiện công trình, hoạt động với tên Trường La San Taberd." },
+        { "moc": "Cuối 2019", "noi_dung": "UBND TP.HCM xếp hạng di tích kiến trúc nghệ thuật cấp thành phố." }
+      ],
+      "nhan_vat": [
+        { "ten": "Trần Đại Nghĩa (1913 – 1997)", "vai_tro": "Giáo sư, kỹ sư quân giới, Anh hùng Lao động, người được đặt tên cho trường" }
+      ],
+      "y_nghia": "Một ngôi trường hơn 140 năm tuổi vẫn tiếp tục dạy học, nối liền giáo dục xưa và nay.",
+      "anh": [
+        { "file": "taberd-xua.jpg", "loai": "xua", "chu_thich": "Trường Taberd đầu thế kỷ XX" },
+        { "file": "tran-dai-nghia-nay.png", "loai": "nay", "chu_thich": "Khuôn viên trường ngày nay" }
+      ]
+    },
+    {
+      "id": "ubnd-tphcm",
+      "loai": "di-tich",
+      "bieu_tuong": "dinh-thu",
+      "cum": "dong-khoi",
+      "ten": "Trụ sở HĐND & UBND TP.HCM",
+      "ten_khac": "Tòa Thị chính Sài Gòn (Hôtel de Ville)",
+      "dia_chi": "86 Lê Thánh Tôn",
+      "toa_do": [10.776389, 106.701111],
+      "nam": "1898 – 1909",
+      "xep_hang": "Di tích quốc gia",
+      "tom_tat": "Công trình theo phong cách Phục Hưng Pháp, do kiến trúc sư Paul Gardès thiết kế, nằm ở đầu đường Nguyễn Huệ. Người Việt thời xưa gọi là Dinh Đốc lý hay Dinh Xã Tây. Tòa nhà nổi bật với tháp chuông ở giữa và các phù điêu đắp nổi tinh xảo.",
+      "lich_su": [
+        { "moc": "1898 – 1909", "noi_dung": "Xây dựng thời Pháp thuộc với tên Hôtel de Ville, làm trung tâm hành chính của chính quyền thuộc địa." },
+        { "moc": "1959 – 1975", "noi_dung": "Thời Việt Nam Cộng hòa, gọi là Tòa Đô Chánh Sài Gòn." },
+        { "moc": "2/7/1976", "noi_dung": "Sài Gòn – Gia Định đổi tên thành Thành phố Hồ Chí Minh. Tòa nhà trở thành trụ sở UBND thành phố." },
+        { "moc": "4/11/2020", "noi_dung": "Được xếp hạng Di tích kiến trúc nghệ thuật quốc gia." }
+      ],
+      "nhan_vat": [
+        { "ten": "Paul Gardès", "vai_tro": "Kiến trúc sư người Pháp thiết kế công trình" }
+      ],
+      "y_nghia": "Từng là biểu tượng quyền lực cai trị thuộc địa, nay là trụ sở chính quyền của thành phố mang tên Bác Hồ.",
+      "anh": [
+        { "file": "ubnd-xua.jpg", "loai": "xua", "chu_thich": "Tòa Đô Chánh Sài Gòn, tháng 5/1962" },
+        { "file": "ubnd-nay.jpg", "loai": "nay", "chu_thich": "Trụ sở UBND TP.HCM ngày nay" }
+      ]
+    },
+    {
+      "id": "cong-vien-chi-lang",
+      "loai": "di-tich",
+      "bieu_tuong": "cong-vien",
+      "cum": "dong-khoi",
+      "ten": "Công viên Chi Lăng",
+      "dia_chi": "Góc Đồng Khởi – Lê Thánh Tôn",
+      "toa_do": [10.7777, 106.7017],
+      "nam": "Thời Pháp thuộc",
+      "tom_tat": "Một trong những công viên lâu đời nhất của Sài Gòn. Mảng xanh này gắn liền với trục đường Catinat (nay là đường Đồng Khởi) từ thời Pháp thuộc.",
+      "y_nghia": "Là khoảng xanh giữa lòng đô thị, kết nối các công trình di sản trên trục Đồng Khởi.",
+      "anh": [
+        { "file": "chi-lang-nay.jpg", "loai": "nay", "chu_thich": "Công viên Chi Lăng ngày nay" }
+      ]
+    },
+    {
+      "id": "nha-hat-thanh-pho",
+      "loai": "di-tich",
+      "bieu_tuong": "nha-hat",
+      "cum": "dong-khoi",
+      "ten": "Nhà hát Thành phố",
+      "ten_khac": "Nhà hát Lớn, Saigon Opera House",
+      "dia_chi": "7 Công trường Lam Sơn",
+      "toa_do": [10.7767525, 106.7032824],
+      "nam": "1898 – 1900",
+      "xep_hang": "Di tích quốc gia (2012)",
+      "tom_tat": "Nhà hát do ba kiến trúc sư Pháp (Félix Olivier, Eugène Ferret, Ernest Guichard) thiết kế theo phong cách Tây Âu cuối thế kỷ XIX. Công trình nằm cao hơn mặt đất khoảng 2 m. Khán phòng hình ô-van, gần 500 chỗ, được thiết kế để nghe rõ âm thanh mộc mà không cần loa.",
+      "lich_su": [
+        { "moc": "1/1/1900", "noi_dung": "Khánh thành, sau 2 năm xây dựng." },
+        { "moc": "1944", "noi_dung": "Bị máy bay Đồng Minh oanh tạc, hư hại nặng." },
+        { "moc": "1954", "noi_dung": "Làm nơi tạm trú cho thường dân Pháp di cư từ miền Bắc vào." },
+        { "moc": "1956 – 1975", "noi_dung": "Trở thành trụ sở Quốc hội, sau là Hạ nghị viện Việt Nam Cộng hòa." },
+        { "moc": "Sau 1975", "noi_dung": "Trở lại chức năng biểu diễn nghệ thuật." },
+        { "moc": "1998", "noi_dung": "Đại tu nhân dịp kỷ niệm 300 năm Sài Gòn – Gia Định." }
+      ],
+      "nhan_vat": [
+        { "ten": "Félix Olivier, Eugène Ferret, Ernest Guichard", "vai_tro": "Các kiến trúc sư người Pháp thiết kế nhà hát" }
+      ],
+      "y_nghia": "Một công trình từng đổi nhiều vai: nhà hát, nơi tạm trú, trụ sở Quốc hội, rồi lại là nhà hát. Lịch sử của nó phản chiếu lịch sử thành phố. Ngay trước cửa nay có ga ngầm Metro số 1.",
+      "anh": [
+        { "file": "nha-hat-xua.jpg", "loai": "xua", "chu_thich": "Théâtre Municipal, khoảng 1910" },
+        { "file": "nha-hat-nay.jpg", "loai": "nay", "chu_thich": "Nhà hát Thành phố ngày nay" }
+      ]
+    },
+    {
+      "id": "khach-san-continental",
+      "loai": "di-tich",
+      "bieu_tuong": "khach-san",
+      "cum": "dong-khoi",
+      "ten": "Khách sạn Continental Saigon",
+      "dia_chi": "132 – 134 Đồng Khởi",
+      "toa_do": [10.7770648, 106.7028032],
+      "nam": "1880",
+      "tom_tat": "Khách sạn lâu đời nhất Sài Gòn, nằm trên đường Catinat (nay là Đồng Khởi) đối diện Nhà hát Thành phố. Nhiều nhà báo, nhà văn nước ngoài từng lưu trú tại đây, trong đó có Graham Greene, tác giả tiểu thuyết “Người Mỹ trầm lặng”.",
+      "nhan_vat": [
+        { "ten": "Graham Greene", "vai_tro": "Nhà văn Anh từng lưu trú, lấy Sài Gòn làm bối cảnh tiểu thuyết “Người Mỹ trầm lặng”" }
+      ],
+      "y_nghia": "Hơn 140 năm đón khách, khách sạn là nhân chứng của phố Catinat xưa và đường Đồng Khởi nay.",
+      "anh": [
+        { "file": "catinat-xua.jpg", "loai": "xua", "chu_thich": "Phố Catinat thập niên 1920. Bên phải là khách sạn Continental." },
+        { "file": "continental-nay.jpg", "loai": "nay", "chu_thich": "Khách sạn Continental ngày nay" }
+      ]
+    },
+    {
+      "id": "nha-tho-duc-ba",
+      "loai": "di-tich",
+      "bieu_tuong": "nha-tho",
+      "cum": "nha-tho",
+      "ten": "Nhà thờ Đức Bà Sài Gòn",
+      "ten_khac": "Vương cung thánh đường Chính tòa Đức Bà",
+      "dia_chi": "01 Công xã Paris",
+      "toa_do": [10.779722, 106.699167],
+      "nam": "1877 – 1880",
+      "tom_tat": "Kiến trúc sư Jules Bourard thiết kế nhà thờ theo phong cách Neo-Romanesque kết hợp Gothic. Toàn bộ vật liệu, từ gạch nung đỏ Marseille, kính màu đến sắt thép, đều chở từ Pháp sang. Loại gạch này giữ được màu tươi, không bám rêu suốt hơn một thế kỷ.",
+      "lich_su": [
+        { "moc": "7/10/1877", "noi_dung": "Lễ đặt đá khởi công." },
+        { "moc": "Phục Sinh 1880", "noi_dung": "Khánh thành." },
+        { "moc": "1895", "noi_dung": "Xây thêm 2 tháp chuông, nâng chiều cao lên 57,6 m, cùng bộ 6 quả chuông đồng nặng gần 30 tấn." },
+        { "moc": "1959", "noi_dung": "Dựng tượng Đức Mẹ Hòa Bình bằng đá cẩm thạch Carrara. Tòa Thánh nâng nhà thờ lên hàng Vương cung thánh đường." },
+        { "moc": "2017 – nay", "noi_dung": "Đại trùng tu bằng vật liệu nhập từ châu Âu để giữ nguyên kiến trúc gốc." }
+      ],
+      "nhan_vat": [
+        { "ten": "Jules Bourard", "vai_tro": "Kiến trúc sư thắng cuộc thi thiết kế năm 1877" }
+      ],
+      "y_nghia": "Biểu tượng văn hóa – kiến trúc của TP.HCM, minh chứng cho giao lưu Đông – Tây trong lịch sử đô thị Sài Gòn.",
+      "anh": [
+        { "file": "nha-tho-xua.jpg", "loai": "xua", "chu_thich": "Quảng trường Nhà thờ đầu thế kỷ XX" },
+        { "file": "nha-tho-nay.jpg", "loai": "nay", "chu_thich": "Nhà thờ Đức Bà ngày nay" }
+      ]
+    },
+    {
+      "id": "buu-dien",
+      "loai": "di-tich",
+      "bieu_tuong": "buu-dien",
+      "cum": "nha-tho",
+      "ten": "Bưu điện Trung tâm Sài Gòn",
+      "dia_chi": "02 Công xã Paris",
+      "toa_do": [10.779884, 106.699943],
+      "nam": "1886 – 1891",
+      "tom_tat": "Bưu điện nằm đối diện Nhà thờ Đức Bà, mang kiến trúc Pháp cổ kính với mái vòm thép đồ sộ. Bên trong sảnh có những tấm bản đồ cổ vẽ tay. Đây là một trong những công trình được du khách ghé thăm nhiều nhất thành phố.",
+      "y_nghia": "Vẫn hoạt động như một bưu điện thật sau hơn 130 năm. Di sản ở đây không chỉ để ngắm mà vẫn đang được sử dụng.",
+      "anh": [
+        { "file": "buu-dien-xua.jpg", "loai": "xua", "chu_thich": "Hôtel des Postes đầu thế kỷ XX" },
+        { "file": "buu-dien-nay.jpg", "loai": "nay", "chu_thich": "Bưu điện Trung tâm năm 2022" }
+      ]
+    },
+    {
+      "id": "duong-sach",
+      "loai": "di-tich",
+      "bieu_tuong": "sach",
+      "cum": "nha-tho",
+      "ten": "Đường sách Nguyễn Văn Bình",
+      "dia_chi": "Đường Nguyễn Văn Bình",
+      "toa_do": [10.7805735, 106.6996948],
+      "nam": "2016",
+      "tom_tat": "Con đường lâu đời bên hông Bưu điện, từ năm 2016 trở thành đường sách: không gian văn hóa đọc với nhiều gian hàng sách và quán cà phê.",
+      "y_nghia": "Ví dụ về cách một con phố cũ được làm mới thành không gian văn hóa cho cộng đồng.",
+      "anh": []
+    },
+    {
+      "id": "cong-vien-30-4",
+      "loai": "di-tich",
+      "bieu_tuong": "cong-vien",
+      "cum": "nha-tho",
+      "ten": "Công viên 30/4",
+      "dia_chi": "Giữa Nhà thờ Đức Bà và Dinh Độc Lập",
+      "toa_do": [10.7786, 106.6971],
+      "nam": "Sau 1975",
+      "tom_tat": "Mảng xanh nằm giữa Nhà thờ Đức Bà và Dinh Độc Lập. Tên công viên ghi dấu ngày 30/4/1975, ngày giải phóng miền Nam, thống nhất đất nước. Đây là điểm dừng chân quen thuộc gắn với văn hóa cà phê bệt Sài Gòn.",
+      "y_nghia": "Tên gọi nhắc nhớ sự kiện lịch sử đã diễn ra ngay cuối con đường này.",
+      "anh": []
+    },
+    {
+      "id": "dinh-doc-lap",
+      "loai": "di-tich",
+      "bieu_tuong": "dinh-thu",
+      "cum": "nha-tho",
+      "ten": "Dinh Độc Lập",
+      "ten_khac": "Hội trường Thống Nhất",
+      "dia_chi": "135 Nam Kỳ Khởi Nghĩa",
+      "toa_do": [10.777108, 106.695441],
+      "nam": "1962 – 1966",
+      "xep_hang": "Di tích quốc gia đặc biệt",
+      "tom_tat": "Trên nền Dinh Norodom thời Pháp, Dinh Độc Lập được xây lại theo thiết kế của kiến trúc sư Ngô Viết Thụ, mang phong cách hiện đại thập niên 1960. Nơi đây ghi dấu sự kiện giải phóng miền Nam, thống nhất đất nước ngày 30/4/1975.",
+      "lich_su": [
+        { "moc": "1868 – 1873", "noi_dung": "Pháp xây Dinh Norodom, dinh Toàn quyền Đông Dương." },
+        { "moc": "27/2/1962", "noi_dung": "Dinh bị ném bom, hư hại nặng và sau đó bị phá bỏ." },
+        { "moc": "1962 – 1966", "noi_dung": "Xây Dinh Độc Lập mới theo đồ án của KTS Ngô Viết Thụ. Khánh thành ngày 31/10/1966." },
+        { "moc": "8/4/1975", "noi_dung": "Phi công Nguyễn Thành Trung lái máy bay ném bom Dinh Độc Lập." },
+        { "moc": "30/4/1975", "noi_dung": "Xe tăng Quân Giải phóng húc đổ cổng dinh. Lá cờ cách mạng tung bay trên nóc dinh. Chiến dịch Hồ Chí Minh toàn thắng." }
+      ],
+      "nhan_vat": [
+        { "ten": "Ngô Viết Thụ", "vai_tro": "Kiến trúc sư thiết kế Dinh Độc Lập" },
+        { "ten": "Nguyễn Thành Trung", "vai_tro": "Phi công ném bom Dinh ngày 8/4/1975" },
+        { "ten": "Bùi Quang Thận", "vai_tro": "Người cắm cờ trên nóc Dinh trưa 30/4/1975" }
+      ],
+      "y_nghia": "Biểu tượng của ngày thống nhất đất nước. Đây là một trong những địa điểm quan trọng nhất của lịch sử Việt Nam hiện đại.",
+      "anh": [
+        { "file": "dinh-norodom-xua.jpg", "loai": "xua", "chu_thich": "Dinh Norodom (Dinh Toàn quyền), năm 1896" },
+        { "file": "dinh-doc-lap-nay.jpg", "loai": "nay", "chu_thich": "Dinh Độc Lập năm 2024" }
+      ]
+    },
+    {
+      "id": "cho-ben-thanh",
+      "loai": "di-tich",
+      "bieu_tuong": "cho",
+      "cum": "ben-thanh",
+      "ten": "Chợ Bến Thành",
+      "dia_chi": "Công trường Quách Thị Trang",
+      "toa_do": [10.77252069, 106.69801918],
+      "nam": "1912 – 1914",
+      "tom_tat": "Chợ khởi công năm 1912, rộng 13.056 m². Chiếc đồng hồ ở cửa Nam được xem là biểu tượng không chính thức của Thành phố Hồ Chí Minh. Chợ bán quần áo, vải, hàng thủ công mỹ nghệ, thực phẩm, trái cây, hoa tươi.",
+      "y_nghia": "Hơn 100 năm là trung tâm buôn bán của Sài Gòn, gắn với đời sống hằng ngày của người dân.",
+      "anh": [
+        { "file": "cho-ben-thanh-nay.jpg", "loai": "nay", "chu_thich": "Chợ Bến Thành ngày nay" }
+      ]
+    },
+    {
+      "id": "ba-son",
+      "loai": "di-tich",
+      "bieu_tuong": "xuong-tau",
+      "cum": "ba-son",
+      "ten": "Khu vực Ba Son",
+      "ten_khac": "Thủy xưởng Sài Gòn (Arsenal de Saigon)",
+      "dia_chi": "Đường Tôn Đức Thắng",
+      "toa_do": [10.7821, 106.7083],
+      "nam": "1790 / 1863",
+      "tom_tat": "Năm 1790, chúa Nguyễn Ánh lập Chu Sư Xưởng ở ngã ba sông Sài Gòn và rạch Thị Nghè. Năm 1863, người Pháp lập Thủy xưởng Sài Gòn trên nền cũ, thành xưởng đóng và sửa tàu hiện đại bậc nhất Đông Dương. Ba Son còn là cái nôi của phong trào công nhân Sài Gòn.",
+      "lich_su": [
+        { "moc": "1790", "noi_dung": "Chúa Nguyễn Ánh lập Chu Sư Xưởng đóng chiến thuyền." },
+        { "moc": "1838", "noi_dung": "Thời vua Minh Mạng, chiếc thuyền máy hơi nước đầu tiên của Việt Nam được đóng tại đây." },
+        { "moc": "28/4/1863", "noi_dung": "Chuẩn đô đốc Bonard ký nghị định lập Arsenal de Saigon." },
+        { "moc": "1884 – 1888", "noi_dung": "Đào ụ tàu khô dài 156 m, rộng 21 m, sâu 10 m. Đây là công trình quy mô bậc nhất châu Á lúc bấy giờ." },
+        { "moc": "8/1925", "noi_dung": "Cuộc bãi công Ba Son do Tôn Đức Thắng lãnh đạo, ngăn tàu chiến Michelet chở lính Pháp sang đàn áp cách mạng Trung Quốc." }
+      ],
+      "nhan_vat": [
+        { "ten": "Nguyễn Ánh (vua Gia Long)", "vai_tro": "Lập Chu Sư Xưởng năm 1790" },
+        { "ten": "Tôn Đức Thắng", "vai_tro": "Lãnh đạo cuộc bãi công Ba Son năm 1925" }
+      ],
+      "ghi_chu": "Tên “Ba Son” phổ biến nhất được cho là đọc trại từ tiếng Pháp “Bassin de radoub”, nghĩa là ụ sửa chữa tàu.",
+      "y_nghia": "Ba Son đi qua 3 thời kỳ: xưởng đóng thuyền của nhà Nguyễn, công xưởng thuộc địa, rồi nơi khởi đầu phong trào công nhân có tổ chức ở Việt Nam.",
+      "anh": [
+        { "file": "ba-son-xua.jpg", "loai": "xua", "chu_thich": "Arsenal Sài Gòn thập niên 1920" },
+        { "file": "ba-son-nay.jpg", "loai": "nay", "chu_thich": "Xưởng Ba Son năm 2013, trước khi di dời" }
+      ]
+    },
+    {
+      "id": "bt-ton-duc-thang",
+      "loai": "di-tich",
+      "bieu_tuong": "bao-tang",
+      "cum": "ba-son",
+      "ten": "Bảo tàng Tôn Đức Thắng",
+      "dia_chi": "5 Tôn Đức Thắng",
+      "toa_do": [10.7776675, 106.7070246],
+      "nam": "1988",
+      "tom_tat": "Bảo tàng nằm gần khu Ba Son, lưu giữ tư liệu và hiện vật về cuộc đời Chủ tịch Tôn Đức Thắng và phong trào công nhân Ba Son.",
+      "nhan_vat": [
+        { "ten": "Tôn Đức Thắng (1888 – 1980)", "vai_tro": "Người công nhân Ba Son, nhà cách mạng, Chủ tịch nước Việt Nam" }
+      ],
+      "y_nghia": "Kể câu chuyện về một người thợ máy Sài Gòn trở thành Chủ tịch nước, gắn liền với lịch sử giai cấp công nhân Việt Nam.",
+      "anh": [
+        { "file": "bt-ton-duc-thang-nay.jpg", "loai": "nay", "chu_thich": "Bảo tàng Tôn Đức Thắng" }
+      ]
+    },
+    {
+      "id": "thao-cam-vien",
+      "loai": "di-tich",
+      "bieu_tuong": "vuon-thu",
+      "cum": "ba-son",
+      "ten": "Thảo Cầm Viên Sài Gòn",
+      "dia_chi": "2 Nguyễn Bỉnh Khiêm",
+      "toa_do": [10.78805556, 106.70472222],
+      "nam": "1864",
+      "tom_tat": "Khởi công năm 1864 cạnh rạch Thị Nghè. Đây là một trong những vườn thú lâu đời nhất thế giới vẫn còn hoạt động, đồng thời là vườn bách thảo với nhiều cây cổ thụ quý.",
+      "y_nghia": "Hơn 160 năm là lá phổi xanh và nơi vui chơi quen thuộc của nhiều thế hệ người Sài Gòn.",
+      "anh": [
+        { "file": "thao-cam-vien-xua.jpg", "loai": "xua", "chu_thich": "Vườn Bách thảo Sài Gòn đầu thế kỷ XX" },
+        { "file": "thao-cam-vien-nay.jpg", "loai": "nay", "chu_thich": "Thảo Cầm Viên ngày nay" }
+      ]
+    },
+    {
+      "id": "ben-bach-dang",
+      "loai": "di-tich",
+      "bieu_tuong": "ben-song",
+      "cum": "ba-son",
+      "ten": "Bến Bạch Đằng",
+      "dia_chi": "Ven sông Sài Gòn, đường Tôn Đức Thắng",
+      "toa_do": [10.7784042, 106.7075008],
+      "nam": "Thế kỷ XIX",
+      "tom_tat": "Dải công viên ven sông Sài Gòn nối liền với Ba Son. Nơi đây gắn với lịch sử giao thương và quốc phòng đường thủy của thành phố.",
+      "y_nghia": "Sài Gòn lớn lên nhờ dòng sông. Bến Bạch Đằng là nơi thấy rõ nhất mối gắn bó đó.",
+      "anh": [
+        { "file": "ben-bach-dang-xua.jpg", "loai": "xua", "chu_thich": "Bến cảng ven sông Sài Gòn thập niên 1920" }
+      ]
+    },
+    {
+      "id": "bt-lich-su",
+      "loai": "di-tich",
+      "bieu_tuong": "bao-tang",
+      "cum": "ba-son",
+      "ten": "Bảo tàng Lịch sử TP.HCM",
+      "ten_khac": "Bảo tàng Blanchard de la Brosse",
+      "dia_chi": "2 Nguyễn Bỉnh Khiêm (trong Thảo Cầm Viên)",
+      "toa_do": [10.7879719, 106.7049563],
+      "nam": "1927 – 1929",
+      "tom_tat": "Bảo tàng ra đời để gìn giữ bộ sưu tập cổ vật của nhà sưu tầm Holbé, được Hội Nghiên cứu Đông Dương mua lại bằng tiền lạc quyên. Công trình mang phong cách Á Đông, mở cửa ngày 1/1/1929.",
+      "lich_su": [
+        { "moc": "28/11/1927", "noi_dung": "Thống đốc Nam Kỳ Blanchard de la Brosse ký nghị định thành lập bảo tàng." },
+        { "moc": "1/1/1929", "noi_dung": "Khánh thành." },
+        { "moc": "20/10/1945", "noi_dung": "Chính phủ Việt Nam Dân chủ Cộng hòa đổi tên thành Gia Định Bảo tàng viện." },
+        { "moc": "1956", "noi_dung": "Đổi tên thành Viện bảo tàng Quốc gia Việt Nam." },
+        { "moc": "26/8/1979", "noi_dung": "Đổi tên thành Bảo tàng Lịch sử TP.HCM (năm 2013 trở lại đúng tên này)." }
+      ],
+      "nhan_vat": [
+        { "ten": "Holbé", "vai_tro": "Nhà sưu tầm, chủ bộ cổ vật đầu tiên" },
+        { "ten": "Jean Bouchot", "vai_tro": "Giám thủ đầu tiên của bảo tàng" }
+      ],
+      "y_nghia": "Bảo tàng ra đời từ tiền quyên góp của nhiều người. Nơi đây lưu giữ hiện vật về lịch sử, văn hóa Việt Nam và Đông Nam Á.",
+      "anh": [
+        { "file": "bt-lich-su-xua.jpg", "loai": "xua", "chu_thich": "Bảo tàng khoảng năm 1930" },
+        { "file": "bt-lich-su-nay.jpg", "loai": "nay", "chu_thich": "Bảo tàng Lịch sử TP.HCM ngày nay" }
+      ]
+    },
+
+    { "id": "secret-garden", "loai": "am-thuc", "bieu_tuong": "an-uong", "cum": "am-thuc", "ten": "Secret Garden", "dia_chi": "158 Pasteur", "toa_do": [10.7773229, 106.6998263], "tom_tat": "Cơm gia đình Việt Nam trên tầng thượng một chung cư cổ." },
+    { "id": "nha-hang-ngon", "loai": "am-thuc", "bieu_tuong": "an-uong", "cum": "am-thuc", "ten": "Nhà hàng Ngon", "dia_chi": "160 Pasteur", "toa_do": [10.7773442, 106.6996559], "tom_tat": "Hơn 500 món ăn đường phố và đặc sản 3 miền, phục vụ trong biệt thự cổ kiểu Pháp.", "gio_mo": "7:30 – 22:30", "gia": "200.000 – 700.000 đ/người" },
+    { "id": "bun-thit-nuong", "loai": "am-thuc", "bieu_tuong": "an-uong", "cum": "am-thuc", "ten": "Bún thịt nướng Nguyễn Trung Trực", "dia_chi": "1 Nguyễn Trung Trực", "toa_do": [10.7753, 106.6977], "tom_tat": "Quán bình dân nổi tiếng, quen thuộc với dân văn phòng." },
+    { "id": "tuk-tuk", "loai": "am-thuc", "bieu_tuong": "an-uong", "cum": "am-thuc", "ten": "Tuk Tuk Thai Bistro", "dia_chi": "38 Lý Tự Trọng", "toa_do": [10.77734, 106.700248], "tom_tat": "Món Thái hiện đại, chuẩn vị." },
+    { "id": "vincom-dong-khoi", "loai": "am-thuc", "bieu_tuong": "an-uong", "cum": "am-thuc", "ten": "Vincom Center Đồng Khởi", "dia_chi": "72 Lê Thánh Tôn (cổng Lý Tự Trọng)", "toa_do": [10.7781566, 106.7018931], "tom_tat": "Khu ẩm thực tầng hầm với nhiều thương hiệu." },
+    { "id": "dim-tu-tac", "loai": "am-thuc", "bieu_tuong": "an-uong", "cum": "am-thuc", "ten": "Dim Tu Tac", "dia_chi": "55 Đông Du", "toa_do": [10.7755305, 106.7043576], "tom_tat": "Món Quảng Đông và dim sum tươi ngon.", "gia": "200.000 – 500.000 đ/người" },
+    { "id": "nguyen-sinh", "loai": "am-thuc", "bieu_tuong": "an-uong", "cum": "am-thuc", "ten": "Nguyên Sinh Bistro", "dia_chi": "141 Trần Đình Xu", "toa_do": [10.7615, 106.6905], "tom_tat": "Mở từ năm 1942, nổi tiếng với thịt nguội, pate gan và kiểu “cơm Tây” hoài cổ.", "gio_mo": "6:00 – 21:00", "gia": "50.000 – 400.000 đ" },
+    { "id": "din-ky", "loai": "am-thuc", "bieu_tuong": "an-uong", "cum": "am-thuc", "ten": "Nhà hàng Dìn Ký", "dia_chi": "137C Nguyễn Trãi", "toa_do": [10.769221, 106.6902387], "tom_tat": "Quán lâu đời chuyên món người Hoa, mở cửa xuyên đêm.", "gio_mo": "24/7", "gia": "100.000 – 600.000 đ" }
+  ]
+}

@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Hướng dẫn kỹ thuật</title>
+  <meta name="description" content="Giải thích phần kỹ thuật của trang Bản đồ di sản Phường Sài Gòn: từ kiến trúc tới tên miền, hosting và cách đưa lên mạng.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600&family=Lora:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --paper: #f4efe6; --paper-2: #ebe4d6; --card: #fbf8f2;
+      --ink: #1e1a16; --ink-2: #5c5348; --ink-3: #8a8072; --line: #d9cfbe;
+      --son: #8f2d1f; --dong: #a87b3e; --reu: #3f6b5a;
+      --serif: "Lora", Georgia, serif;
+      --sans: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", sans-serif;
+      --mono: ui-monospace, "Cascadia Code", Consolas, monospace;
+    }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font: 16px/1.7 var(--sans); }
+    a { color: var(--son); }
+    .wrap { max-width: 780px; margin: 0 auto; padding: 48px 20px 80px; }
+    .back { font-size: 14px; text-decoration: none; }
+    .eyebrow { margin: 28px 0 6px; font-size: 11px; letter-spacing: .14em; text-transform: uppercase; color: var(--dong); font-weight: 600; }
+    h1 { font-family: var(--serif); font-weight: 600; font-size: clamp(30px, 6vw, 44px); line-height: 1.15; margin: 0 0 16px; }
+    .lede { font-size: 18px; color: var(--ink-2); margin: 0 0 28px; }
+    h2 { font-family: var(--serif); font-weight: 600; font-size: 26px; line-height: 1.25; margin: 56px 0 14px; padding-top: 24px; border-top: 1px solid var(--line); }
+    h2 .n { color: var(--son); margin-right: 8px; }
+    h3 { font-family: var(--serif); font-weight: 600; font-size: 19px; margin: 30px 0 8px; }
+    p, li { max-width: 68ch; }
+    code { font-family: var(--mono); font-size: .88em; background: var(--paper-2); padding: 1px 6px; border-radius: 4px; }
+    pre { font-variant-ligatures: none; background: #262019; color: #efe6d6; padding: 16px 18px; border-radius: 10px; overflow-x: auto; font: 13.5px/1.6 var(--mono); }
+    pre code { background: none; padding: 0; font-size: inherit; color: inherit; }
+    pre .c { color: #b9a98f; }
+    .toc { background: var(--card); border: 1px solid var(--line); border-radius: 12px; padding: 18px 24px; }
+    .toc ol { margin: 0; padding-left: 20px; columns: 2; column-gap: 32px; }
+    .toc li { font-size: 15px; break-inside: avoid; }
+    .say { background: var(--card); border-left: 4px solid var(--son); border-radius: 0 10px 10px 0; padding: 14px 20px; margin: 18px 0; }
+    .say::before { content: "Trả lời"; display: block; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--son); font-weight: 600; margin-bottom: 4px; }
+    .say p { margin: 0; font-family: var(--serif); font-style: italic; font-size: 17px; }
+    .tip { background: var(--paper-2); border-radius: 10px; padding: 12px 18px; font-size: 15px; }
+    table { width: 100%; border-collapse: collapse; font-size: 15px; margin: 14px 0; }
+    th, td { text-align: left; vertical-align: top; padding: 9px 12px; border-bottom: 1px solid var(--line); }
+    th { font-weight: 600; background: var(--card); }
+    .table-scroll { overflow-x: auto; }
+    figure { margin: 22px 0; }
+    figure svg { width: 100%; height: auto; display: block; background: var(--card); border: 1px solid var(--line); border-radius: 12px; }
+    figcaption { font-size: 13px; color: var(--ink-3); margin-top: 8px; text-align: center; }
+    .steps { counter-reset: s; list-style: none; padding: 0; }
+    .steps > li { counter-increment: s; position: relative; padding: 0 0 18px 46px; }
+    .steps > li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 30px; height: 30px; border-radius: 50%; background: var(--son); color: #fff; display: grid; place-items: center; font-weight: 600; font-size: 14px; }
+    details { background: var(--card); border: 1px solid var(--line); border-radius: 10px; padding: 12px 18px; margin: 10px 0; }
+    summary { font-weight: 600; cursor: pointer; }
+    details p { margin: 10px 0 2px; }
+    dl.gloss { display: grid; grid-template-columns: max-content 1fr; gap: 8px 18px; }
+    dl.gloss dt { font-weight: 600; }
+    dl.gloss dd { margin: 0; color: var(--ink-2); }
+    @media (max-width: 640px) {
+      .toc ol { columns: 1; }
+      dl.gloss { grid-template-columns: 1fr; gap: 2px; }
+      dl.gloss dd { margin-bottom: 10px; }
+      h2 { font-size: 23px; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="eyebrow">Tài liệu dành cho người trình bày</p>
+  <h1>Trang web này được làm như thế nào?</h1>
+  <p class="lede">Giải thích phần kỹ thuật bằng lời dễ hiểu, theo thứ tự: trang web chạy ra sao, bên trong gồm những gì, máy tính đếm di tích thế nào, và làm sao để đưa trang lên mạng cho mọi người xem.</p>
+
+  <nav class="toc" aria-label="Mục lục">
+    <ol>
+      <li><a href="#tom-tat">Tóm tắt trong 30 giây</a></li>
+      <li><a href="#internet">Gõ địa chỉ web thì chuyện gì xảy ra?</a></li>
+      <li><a href="#kien-truc">Kiến trúc: chỉ có frontend</a></li>
+      <li><a href="#thanh-phan">Các thành phần bên trong</a></li>
+      <li><a href="#ban-do">Bản đồ số hoạt động thế nào?</a></li>
+      <li><a href="#du-lieu">Dữ liệu: tọa độ và ranh giới</a></li>
+      <li><a href="#tia-sang">Thuật toán tia sáng</a></li>
+      <li><a href="#dien-thoai">Chạy được trên điện thoại</a></li>
+      <li><a href="#trien-khai">Đưa trang lên mạng</a></li>
+      <li><a href="#chinh-sua">Thêm, sửa, xóa địa điểm</a></li>
+      <li><a href="#hoi-dap">Câu hỏi hay gặp</a></li>
+      <li><a href="#thuat-ngu">Bảng thuật ngữ</a></li>
+    </ol>
+  </nav>
+
+  <!-- 1 -->
+  <h2 id="tom-tat"><span class="n">1</span>Tóm tắt trong 30 giây</h2>
+  <p>Nếu chỉ có nửa phút để trả lời "trang này làm bằng gì?", hãy nói:</p>
+  <div class="say"><p>“Trang của em là một trang web tĩnh, chỉ có phần giao diện chạy trên trình duyệt. Em dùng HTML, CSS và JavaScript. Bản đồ dùng thư viện Leaflet. Dữ liệu các di tích nằm trong một file JSON. Máy tính tự đếm xem có bao nhiêu di tích nằm trong ranh Phường Sài Gòn bằng thuật toán tia sáng. Trang được đưa lên mạng miễn phí bằng GitHub Pages.”</p></div>
+
+  <!-- 2 -->
+  <h2 id="internet"><span class="n">2</span>Gõ địa chỉ web thì chuyện gì xảy ra?</h2>
+  <p>Hãy so sánh với việc <b>đi tới một cửa hàng</b>:</p>
+  <div class="table-scroll"><table>
+    <tr><th>Khái niệm</th><th>Giống như…</th><th>Ví dụ</th></tr>
+    <tr><td><b>Tên miền</b> (domain)</td><td>Tên cửa hàng, dễ nhớ</td><td><code>ten-em.github.io</code></td></tr>
+    <tr><td><b>Địa chỉ IP</b></td><td>Số nhà thật sự, toàn là số, khó nhớ</td><td><code>185.199.108.153</code></td></tr>
+    <tr><td><b>DNS</b></td><td>Cuốn danh bạ tra từ tên cửa hàng ra số nhà</td><td>Hỏi "ten-em.github.io ở đâu?" thì nhận về địa chỉ IP</td></tr>
+    <tr><td><b>Máy chủ</b> (server)</td><td>Cửa hàng, nơi cất sẵn hàng hóa</td><td>Máy tính của GitHub, bật 24/7</td></tr>
+    <tr><td><b>Hosting</b></td><td>Thuê mặt bằng để mở cửa hàng</td><td>GitHub Pages cho "thuê" miễn phí</td></tr>
+    <tr><td><b>Trình duyệt</b></td><td>Người khách đi mua hàng rồi mang về dùng</td><td>Chrome, Safari, Cốc Cốc…</td></tr>
+  </table></div>
+
+  <figure>
+    <svg viewBox="0 0 720 230" role="img" aria-label="Sơ đồ các bước khi mở một trang web">
+      <defs><marker id="a" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#8f2d1f"/></marker></defs>
+      <g font-family="Be Vietnam Pro, sans-serif" font-size="14" fill="#1e1a16" text-anchor="middle">
+        <rect x="20" y="80" width="150" height="70" rx="10" fill="#f4efe6" stroke="#d9cfbe"/>
+        <text x="95" y="110" font-weight="600">Điện thoại /</text><text x="95" y="130" font-weight="600">máy tính</text>
+        <rect x="285" y="10" width="150" height="60" rx="10" fill="#f4efe6" stroke="#d9cfbe"/>
+        <text x="360" y="37" font-weight="600">DNS</text><text x="360" y="56" font-size="12" fill="#5c5348">(danh bạ)</text>
+        <rect x="550" y="80" width="150" height="70" rx="10" fill="#f4efe6" stroke="#d9cfbe"/>
+        <text x="625" y="110" font-weight="600">Máy chủ</text><text x="625" y="130" font-size="12" fill="#5c5348">GitHub Pages</text>
+        <path d="M150,80 L290,62" stroke="#8f2d1f" stroke-width="2" fill="none" marker-end="url(#a)"/>
+        <text x="185" y="52" font-size="12" fill="#5c5348">① tên miền này</text><text x="185" y="67" font-size="12" fill="#5c5348">ở số nhà nào?</text>
+        <path d="M430,62 L560,80" stroke="#8f2d1f" stroke-width="2" fill="none" stroke-dasharray="5 4" marker-end="url(#a)"/>
+        <text x="520" y="52" font-size="12" fill="#5c5348">② địa chỉ IP</text>
+        <path d="M170,115 L545,115" stroke="#8f2d1f" stroke-width="2" fill="none" marker-end="url(#a)"/>
+        <text x="360" y="107" font-size="12" fill="#5c5348">③ "cho tôi xin trang web"</text>
+        <path d="M550,140 L175,140" stroke="#3f6b5a" stroke-width="2" fill="none" marker-end="url(#a)"/>
+        <text x="360" y="160" font-size="12" fill="#3f6b5a">④ gửi về các file: HTML, CSS, JS, JSON, ảnh</text>
+        <text x="95" y="185" font-size="12" fill="#5c5348">⑤ trình duyệt tự</text><text x="95" y="201" font-size="12" fill="#5c5348">ráp lại thành trang</text>
+      </g>
+    </svg>
+    <figcaption>Mọi việc diễn ra trong khoảng 1 giây.</figcaption>
+  </figure>
+
+  <p>Điều quan trọng cần nhớ: máy chủ <b>chỉ gửi file đi</b>. Việc vẽ bản đồ, cắm ghim, đếm di tích đều do <b>trình duyệt trên máy người xem</b> làm.</p>
+
+  <!-- 3 -->
+  <h2 id="kien-truc"><span class="n">3</span>Kiến trúc: chỉ có frontend</h2>
+  <p>Một trang web thường có 3 phần. Hãy so sánh với <b>một nhà hàng</b>:</p>
+  <div class="table-scroll"><table>
+    <tr><th></th><th>Ở nhà hàng</th><th>Ở trang web</th><th>Trang của em</th></tr>
+    <tr><td><b>Frontend</b></td><td>Phòng ăn, bàn ghế, thực đơn: phần khách nhìn thấy</td><td>Giao diện, nút bấm, bản đồ</td><td>✅ Có</td></tr>
+    <tr><td><b>Backend</b></td><td>Nhà bếp: nhận đơn, nấu theo yêu cầu</td><td>Máy chủ xử lý: đăng nhập, lưu bình luận, đặt vé</td><td>❌ Không cần</td></tr>
+    <tr><td><b>Database</b></td><td>Kho nguyên liệu</td><td>Nơi lưu dữ liệu thay đổi liên tục</td><td>❌ Không cần</td></tr>
+  </table></div>
+  <p>Trang của em giống một <b>quầy buffet bày sẵn</b>: món đã nấu xong từ trước, khách đến tự lấy. Không ai gọi món riêng nên không cần nhà bếp.</p>
+
+  <h3>Khi nào thì mới cần backend và database?</h3>
+  <p>Khi người xem <b>gửi dữ liệu lên</b>, ví dụ: đăng nhập, viết bình luận, chấm điểm di tích, đặt vé tham quan. Trang này chỉ để <b>đọc</b>, khoảng 26 địa điểm, nội dung không đổi, nên một file dữ liệu là đủ.</p>
+  <div class="say"><p>“Trang của em là trang tĩnh, chỉ có frontend. Người xem chỉ đọc chứ không gửi gì lên, nên không cần backend hay database. Nhờ vậy trang chạy nhanh, đưa lên mạng miễn phí và gần như không bao giờ bị sập.”</p></div>
+
+  <!-- 4 -->
+  <h2 id="thanh-phan"><span class="n">4</span>Các thành phần bên trong</h2>
+  <p>Toàn bộ trang web chỉ là một thư mục <code>site</code> với vài file. (Tài liệu em đang đọc nằm riêng ở thư mục <code>tai-lieu</code>, không đưa lên mạng.)</p>
+<pre><code>site/
+├── index.html          <span class="c">← bộ khung trang (có những phần nào)</span>
+├── style.css           <span class="c">← cách trang trí (màu, chữ, bố cục)</span>
+├── app.js              <span class="c">← "bộ não": vẽ bản đồ, cắm ghim, đếm di tích, tìm kiếm</span>
+├── editor.js           <span class="c">← chế độ chỉnh sửa: thêm, sửa, xóa địa điểm</span>
+├── data/
+│   ├── dia-diem.json      <span class="c">← sổ ghi chép các địa điểm</span>
+│   ├── ranh-gioi.geojson  <span class="c">← đường viền các phường</span>
+│   └── nguon-anh.json     <span class="c">← tác giả và giấy phép của từng ảnh</span>
+└── images/             <span class="c">← ảnh xưa và nay</span></code></pre>
+
+  <h3>HTML, CSS, JavaScript: bộ ba của mọi trang web</h3>
+  <p>Hãy hình dung trang web như <b>một ngôi nhà</b>:</p>
+  <ul>
+    <li><b>HTML</b> là <b>khung nhà</b>: có phòng nào, cửa ở đâu. Ví dụ: "ở đây có tiêu đề, ở đây có danh sách".</li>
+    <li><b>CSS</b> là <b>sơn và nội thất</b>: màu giấy ngà, chữ kiểu sách cổ, ô nào rộng bao nhiêu.</li>
+    <li><b>JavaScript</b> là <b>hệ thống điện</b>: bấm công tắc thì đèn sáng. Bấm vào ghim thì khung thông tin trượt ra.</li>
+  </ul>
+
+  <h3>Thư viện Leaflet</h3>
+  <p>Viết từ đầu một chương trình bản đồ (kéo, phóng to, cắm ghim) rất khó. <b>Leaflet</b> là một <b>thư viện mã nguồn mở</b>, tức đoạn code có sẵn, miễn phí, do cộng đồng lập trình viên trên thế giới cùng viết. Em chỉ việc "mượn" về dùng, giống như dùng máy tính bỏ túi thay vì tự chế ra máy tính.</p>
+
+  <h3>File JSON: cuốn sổ ghi chép</h3>
+  <p>JSON là cách viết dữ liệu mà cả người lẫn máy đều đọc được. Một địa điểm trông như sau:</p>
+<pre><code>{
+  "id": "dinh-doc-lap",
+  "ten": "Dinh Độc Lập",
+  "dia_chi": "135 Nam Kỳ Khởi Nghĩa",
+  "toa_do": [10.777108, 106.695441],   <span class="c">← vĩ độ, kinh độ</span>
+  "nam": "1962 – 1966",
+  "tom_tat": "Trên nền Dinh Norodom thời Pháp…",
+  "lich_su": [ { "moc": "30/4/1975", "noi_dung": "Xe tăng Quân Giải phóng húc đổ cổng dinh…" } ],
+  "anh": [ { "file": "dinh-doc-lap-nay.jpg", "loai": "nay" } ]
+}</code></pre>
+  <p>Mỗi địa điểm là một "trang" trong cuốn sổ. Khi mở web, JavaScript đọc cuốn sổ này rồi tự tạo ra ghim, danh sách và khung thông tin. <b>Nội dung và cách hiển thị được tách riêng</b>: muốn sửa chữ thì sửa file JSON, không phải động vào code.</p>
+
+  <!-- 5 -->
+  <h2 id="ban-do"><span class="n">5</span>Bản đồ số hoạt động thế nào?</h2>
+  <p>Bản đồ nền thật ra là <b>hàng nghìn tấm ảnh vuông nhỏ</b> (mỗi tấm 256 × 256 điểm ảnh), xếp cạnh nhau như <b>lát gạch</b>. Người ta gọi chúng là <i>tile</i> (ô gạch).</p>
+  <ul>
+    <li>Ở mức phóng nhỏ nhất (zoom 0), cả Trái Đất nằm gọn trong <b>1 ô</b>.</li>
+    <li>Mỗi lần phóng to một mức, mỗi ô tách thành 4 ô chi tiết hơn. Ở mức 16, cả thế giới có khoảng <b>4,3 tỷ ô</b>.</li>
+    <li>Trình duyệt chỉ tải những ô <b>đang nằm trong màn hình</b>, nên bản đồ vẫn chạy mượt trên điện thoại.</li>
+  </ul>
+  <p>Các ô gạch lấy từ <b>OpenStreetMap</b>, một "Wikipedia của bản đồ" do tình nguyện viên khắp thế giới cùng vẽ. Trang có thể dùng kiểu trình bày của <b>CARTO</b>, nhẹ nhàng và trang nhã hơn (cần một mã khóa miễn phí, xem <a href="#trien-khai">mục 9</a>). Màu giấy cũ trên bản đồ là do CSS phủ thêm một lớp lọc màu <i>sepia</i>, giống bộ lọc ảnh trên điện thoại.</p>
+  <p>Nút <b>Ảnh vệ tinh</b> ở góc bản đồ đổi nền sang ảnh chụp từ vệ tinh của <b>Esri</b> (miễn phí, không cần mã khóa), hoặc của <b>Google</b> nếu có mã khóa (xem mục 9). Thật ra đây chỉ là đổi sang một bộ "ô gạch" khác: các lớp ranh giới, ghim, cụm vẫn nằm nguyên phía trên.</p>
+  <p>Dòng chữ nhỏ ở góc dưới bên phải (<i>© OpenStreetMap</i>, <i>© Esri</i>) là <b>ghi nguồn bắt buộc</b> theo giấy phép dữ liệu bản đồ. Dòng này không được xóa, chỉ thu nhỏ cho gọn.</p>
+  <p class="tip">💡 Vì sao không dùng Google Maps? Google Maps đòi đăng ký thẻ thanh toán và có thể tính tiền khi vượt hạn mức. Leaflet và OpenStreetMap thì miễn phí, mã nguồn mở, không lo phát sinh chi phí.</p>
+
+  <h3>Ghim và biểu tượng</h3>
+  <p>Mọi di tích dùng chung <b>một ký hiệu</b>: hình ngôi đền có mái tam giác, hàng cột và bệ, giống ký hiệu di tích trên các bản đồ du lịch. Chân bệ đặt đúng vào tọa độ của di tích. Số nhỏ ở góc là số thứ tự, khớp với danh sách bên trái. Hình đền <b>rỗng viền đỏ</b> là di tích nằm ngoài ranh Phường Sài Gòn. Quán ăn là hình tròn xanh có dao nĩa.</p>
+  <p>Các ký hiệu là hình <b>SVG</b>: hình vẽ bằng "công thức" (tam giác, hình chữ nhật, đường cong) chứ không phải ảnh chụp. Vì vậy phóng to bao nhiêu cũng không bị mờ, và đổi màu được bằng CSS. Ví dụ, mái đền chỉ là một tam giác: <code>&lt;path d="M2 12 18 2l16 10Z"/&gt;</code>, nghĩa là đi từ điểm (2, 12) lên đỉnh (18, 2), xuống (34, 12) rồi khép lại.</p>
+
+  <!-- 6 -->
+  <h2 id="du-lieu"><span class="n">6</span>Dữ liệu: tọa độ và ranh giới</h2>
+  <h3>Tọa độ: kiến thức môn Địa lý</h3>
+  <p>Mỗi địa điểm trên Trái Đất được xác định bằng 2 con số: <b>vĩ độ</b> (Bắc – Nam) và <b>kinh độ</b> (Đông – Tây). Ví dụ Nhà thờ Đức Bà ở khoảng <code>10,7797° B – 106,6992° Đ</code>. Tọa độ các di tích được tra từ Wikipedia và OpenStreetMap.</p>
+
+  <h3>Ranh giới phường: trò chơi nối điểm</h3>
+  <p>Đường viền Phường Sài Gòn là <b>546 điểm tọa độ</b> nối liền nhau thành một vòng khép kín. Dữ liệu gốc là danh mục địa giới hành chính của TP.HCM, gồm 168 phường xã, nặng 5,9 MB. Trang chỉ cần 2 phường nên em đã <b>cắt riêng ra một file 17 KB</b>, nhỏ hơn khoảng 350 lần, để điện thoại tải nhanh.</p>
+  <p>Việc cắt file này do một đoạn chương trình nhỏ (<code>tools/tach_ranh_gioi.py</code>) làm, chỉ chạy <b>một lần trên máy ở nhà</b>. Giống như <b>sơ chế rau ở nhà trước khi mang đi tiệc</b>: đây không phải "nhà bếp" chạy suốt buổi, nên trang web vẫn là trang tĩnh.</p>
+
+  <h3>Ảnh xưa và nay</h3>
+  <p>Ảnh lấy từ <b>Wikimedia Commons</b>, kho ảnh tự do của Wikipedia. Ảnh xưa (thời Pháp thuộc) đã hết bản quyền (<i>public domain</i>). Ảnh nay dùng giấy phép <i>Creative Commons</i>, được dùng tự do nhưng <b>phải ghi tên tác giả</b>. Vì vậy dưới mỗi ảnh đều có dòng ghi nguồn. Ghi nguồn cũng chính là tinh thần của môn Lịch sử: <b>mọi tư liệu đều phải có xuất xứ</b>.</p>
+
+  <!-- 7 -->
+  <h2 id="tia-sang"><span class="n">7</span>Thuật toán tia sáng: máy tính đếm di tích thế nào?</h2>
+  <p>Ô thống kê ghi <b>"Di tích trong phường: 15 / 18"</b>. Con số 15 không phải em đếm tay mà do máy tự tính. Câu hỏi đặt ra là: làm sao máy biết một điểm nằm <b>trong</b> hay <b>ngoài</b> một hình méo mó có 546 đỉnh?</p>
+  <p><b>Mẹo:</b> từ điểm cần kiểm tra, kẻ một tia thẳng sang phải, rồi <b>đếm số lần tia cắt đường viền</b>:</p>
+  <ul>
+    <li>Cắt <b>số lẻ</b> lần (1, 3, 5…) thì điểm nằm <b>TRONG</b>.</li>
+    <li>Cắt <b>số chẵn</b> lần (0, 2, 4…) thì điểm nằm <b>NGOÀI</b>.</li>
+  </ul>
+  <figure>
+    <svg viewBox="0 0 720 260" role="img" aria-label="Minh họa thuật toán tia sáng">
+      <defs><marker id="b" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#5c5348"/></marker></defs>
+      <path d="M200,40 L470,30 L520,120 L430,140 L500,215 L230,225 L170,130 Z" fill="rgba(143,45,31,.08)" stroke="#8f2d1f" stroke-width="2.5"/>
+      <g font-family="Be Vietnam Pro, sans-serif" font-size="15">
+        <line x1="300" y1="90" x2="690" y2="90" stroke="#5c5348" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#b)"/>
+        <circle cx="300" cy="90" r="7" fill="#8f2d1f"/><text x="282" y="80" text-anchor="end" font-weight="600" fill="#8f2d1f">A</text>
+        <circle cx="492" cy="90" r="5" fill="none" stroke="#1e1a16" stroke-width="2"/>
+        <text x="710" y="78" text-anchor="end" fill="#1e1a16" font-weight="600">A: cắt 1 lần → TRONG</text>
+        <line x1="70" y1="180" x2="690" y2="180" stroke="#5c5348" stroke-width="1.5" stroke-dasharray="6 4" marker-end="url(#b)"/>
+        <circle cx="70" cy="180" r="7" fill="#3f6b5a"/><text x="60" y="168" text-anchor="end" font-weight="600" fill="#3f6b5a">B</text>
+        <circle cx="198" cy="180" r="5" fill="none" stroke="#1e1a16" stroke-width="2"/>
+        <circle cx="465" cy="180" r="5" fill="none" stroke="#1e1a16" stroke-width="2"/>
+        <text x="710" y="200" text-anchor="end" fill="#1e1a16" font-weight="600">B: cắt 2 lần → NGOÀI</text>
+        <text x="350" y="250" text-anchor="middle" fill="#5c5348">Vòng tròn rỗng = chỗ tia cắt đường viền</text>
+      </g>
+    </svg>
+    <figcaption>Tia từ A đi ra ngoài phải qua đúng 1 lần. Tia từ B đi vào rồi lại đi ra: 2 lần.</figcaption>
+  </figure>
+  <p>Trong file <code>app.js</code>, toàn bộ thuật toán chỉ khoảng 10 dòng:</p>
+<pre><code>function diemNamTrongVong(kinhDo, viDo, vong) {
+  let trong = false;
+  for (let i = 0, j = vong.length - 1; i &lt; vong.length; j = i++) {   <span class="c">// xét từng cạnh của đường viền</span>
+    const [xi, yi] = vong[i];
+    const [xj, yj] = vong[j];
+    const catNgang = (yi &gt; viDo) !== (yj &gt; viDo);                     <span class="c">// cạnh có vắt ngang qua độ cao của điểm?</span>
+    if (catNgang &amp;&amp; kinhDo &lt; (xj - xi) * (viDo - yi) / (yj - yi) + xi) { <span class="c">// chỗ cắt nằm bên phải điểm?</span>
+      trong = !trong;                                                 <span class="c">// mỗi lần cắt: đảo trong ↔ ngoài</span>
+    }
+  }
+  return trong;
+}</code></pre>
+  <p>Thay vì đếm rồi xét chẵn lẻ, code dùng mẹo <b>"bật – tắt"</b>: ban đầu là "ngoài", mỗi lần cắt thì đảo lại. Cắt lẻ lần thì kết thúc ở "trong".</p>
+  <div class="say"><p>“Nhờ thuật toán này, máy phát hiện ra Dinh Độc Lập, Chợ Bến Thành và Thư viện Khoa học Tổng hợp thực ra thuộc Phường Bến Thành, không thuộc Phường Sài Gòn. Ranh giới mới năm 2025 chạy ngay dọc đường Lý Tự Trọng.”</p></div>
+
+  <h3>Thuật toán thứ hai: vẽ vùng cho các cụm tham quan</h3>
+  <p>Tài liệu chia di tích thành các <b>cụm</b>: những nhóm di tích gần nhau, đi bộ hết trong một buổi. Đó chính là gợi ý lộ trình cho khách du lịch. Trên bản đồ, mỗi cụm là một vùng màu nhạt có tên. Bấm vào vùng hoặc tên cụm trong danh sách thì bản đồ phóng tới vừa khít cụm đó. Có thể bật tắt bằng nút <b>Cụm tham quan</b>.</p>
+  <p>Để vẽ vùng, máy dùng thuật toán <b>bao lồi</b> (<i>convex hull</i>). Hãy tưởng tượng các di tích là những cây đinh cắm trên bảng. Lấy một <b>sợi dây thun căng ra rồi thả</b> cho nó ôm quanh các cây đinh: hình sợi dây tạo thành chính là bao lồi.</p>
+  <p>Viền vùng được vẽ thật dày (44 điểm ảnh) và bo tròn góc, nên vùng "phình" ra ôm trọn các ghim, trông mềm mại như vẽ tay. Khi thu nhỏ bản đồ, tên các cụm tự ẩn đi để khỏi chồng lên nhau.</p>
+  <div class="say"><p>“Cụm là cách em gợi ý lộ trình: mỗi cụm đi bộ được trong một buổi. Máy tự vẽ vùng cho cụm bằng thuật toán bao lồi, giống căng sợi dây thun quanh các cây đinh. Thêm di tích vào cụm thì vùng tự giãn ra theo.”</p></div>
+
+  <!-- 8 -->
+  <h2 id="dien-thoai"><span class="n">8</span>Chạy được trên điện thoại (responsive)</h2>
+  <p>Cùng một trang web nhưng tự <b>sắp xếp lại</b> theo kích thước màn hình, giống như nước tự đổi hình theo cái cốc. Trong CSS có một đoạn "nếu màn hình hẹp hơn 820 điểm ảnh thì…":</p>
+<pre><code>@media (max-width: 820px) {
+  .sidebar { position: fixed; bottom: 0; }   <span class="c">/* danh sách thành tấm kéo từ dưới lên */</span>
+  .detail  { height: 88vh; }                 <span class="c">/* khung chi tiết trượt lên, gần kín màn hình */</span>
+}</code></pre>
+  <p>Trên máy tính: danh sách ở bên trái, chi tiết ở bên phải. Trên điện thoại: bản đồ chiếm toàn màn hình, danh sách và chi tiết trượt từ dưới lên, tiện thao tác bằng ngón cái.</p>
+
+  <!-- 9 -->
+  <h2 id="trien-khai"><span class="n">9</span>Đưa trang lên mạng (triển khai)</h2>
+  <p>"Triển khai" (<i>deploy</i>) nghĩa là đưa thư mục <code>site/</code> từ máy của em lên một máy chủ để ai có đường link cũng xem được.</p>
+
+  <h3>Cách A: GitHub Pages (khuyên dùng)</h3>
+  <p><b>GitHub</b> là nơi lập trình viên cả thế giới cất code, giống "Google Drive cho code". <b>GitHub Pages</b> là dịch vụ miễn phí của GitHub, biến một kho code thành trang web.</p>
+  <ol class="steps">
+    <li>Vào <a href="https://github.com/signup" target="_blank" rel="noopener">github.com/signup</a> và tạo tài khoản (cần từ 13 tuổi trở lên). Tên tài khoản sẽ thành một phần của địa chỉ web, ví dụ <code>tranminhan</code>.</li>
+    <li>Bấm nút <b>New</b> (tạo kho mới, gọi là <i>repository</i>). Đặt tên, ví dụ <code>ban-do-phuong-sai-gon</code>, chọn <b>Public</b>, rồi bấm <b>Create repository</b>.</li>
+    <li>Trong kho mới, bấm <b>uploading an existing file</b>. Mở thư mục <code>site</code> trên máy, chọn <b>tất cả bên trong</b> (index.html, style.css, app.js, editor.js, thư mục data, thư mục images) rồi kéo thả vào trang. Bấm <b>Commit changes</b>.</li>
+    <li>Vào <b>Settings → Pages</b>. Ở mục <i>Branch</i>, chọn <code>main</code> và <code>/ (root)</code>, rồi bấm <b>Save</b>.</li>
+    <li>Chờ 1–2 phút rồi tải lại trang. GitHub sẽ hiện địa chỉ: <code>https://tranminhan.github.io/ban-do-phuong-sai-gon/</code>. Xong!</li>
+  </ol>
+  <p class="tip">💡 Mỗi lần sửa nội dung (ví dụ thêm một di tích vào <code>dia-diem.json</code>), chỉ cần tải file mới lên đè file cũ. Trang web tự cập nhật sau khoảng 1 phút.</p>
+
+  <h3>Cách B: Netlify Drop (nhanh nhất, để chạy thử)</h3>
+  <p>Vào <a href="https://app.netlify.com/drop" target="_blank" rel="noopener">app.netlify.com/drop</a> và kéo thả cả thư mục <code>site</code> vào. Khoảng 10 giây sau là có đường link dạng <code>ten-ngau-nhien.netlify.app</code>.</p>
+
+  <h3>Tên miền: miễn phí hay mua riêng?</h3>
+  <ul>
+    <li><b>Tên miền con miễn phí</b>: <code>…github.io</code>, <code>…netlify.app</code>. Đủ dùng cho bài thuyết trình.</li>
+    <li><b>Tên miền riêng</b>: ví dụ <code>disansaigon.vn</code>. Phải mua và gia hạn theo năm (tên miền .vn khoảng vài trăm nghìn đến dưới một triệu đồng/năm). Mua xong thì "trỏ" tên miền về GitHub Pages trong phần Settings → Pages → Custom domain. Đây chính là việc khai báo trong <b>DNS</b> ở mục 2.</li>
+  </ul>
+  <p><b>HTTPS</b> (ổ khóa trên thanh địa chỉ) nghĩa là dữ liệu giữa máy chủ và người xem được mã hóa. GitHub Pages và Netlify bật sẵn HTTPS miễn phí.</p>
+
+  <h3>Bật nền bản đồ CARTO (không bắt buộc)</h3>
+  <p>Hiện trang dùng nền OpenStreetMap, không cần đăng ký gì. Muốn dùng nền CARTO đẹp hơn: vào <a href="https://carto.com/basemaps/apikey" target="_blank" rel="noopener">carto.com/basemaps/apikey</a>, nhập email để nhận <b>mã khóa miễn phí</b> (dùng cho học tập được tới 5 triệu lượt/tháng). Sau đó mở <code>app.js</code>, dán mã vào dòng <code>const CARTO_KEY = "";</code> giữa hai dấu nháy.</p>
+
+  <h3>Dùng ảnh vệ tinh Google (không bắt buộc)</h3>
+  <p>Mặc định nút <b>Ảnh vệ tinh</b> dùng ảnh của Esri. Muốn dùng ảnh Google cho nét hơn thì phải qua dịch vụ chính thức <b>Google Map Tiles API</b>. Không được chép thẳng đường link ảnh của Google, vì làm vậy vi phạm điều khoản sử dụng.</p>
+  <ol class="steps">
+    <li>Vào <a href="https://console.cloud.google.com/" target="_blank" rel="noopener">console.cloud.google.com</a>, tạo một dự án (<i>project</i>) mới.</li>
+    <li>Mở mục <b>Billing</b> và gắn tài khoản thanh toán (thẻ). Google có <b>hạn mức miễn phí hằng tháng</b>, đủ cho bài thuyết trình. Xem giá hiện tại tại trang <a href="https://mapsplatform.google.com/pricing/" target="_blank" rel="noopener">Google Maps Platform Pricing</a>.</li>
+    <li>Vào <b>APIs &amp; Services → Library</b>, tìm <b>Map Tiles API</b> và bấm <b>Enable</b>.</li>
+    <li>Vào <b>APIs &amp; Services → Credentials → Create credentials → API key</b>. Sau đó <b>giới hạn mã khóa</b>, đây là bước quan trọng:
+      <ul>
+        <li><i>Application restrictions</i>: chọn <b>Websites</b>, thêm <code>http://localhost:8000/*</code> và <code>https://ten-em.github.io/*</code>. Như vậy mã khóa chỉ dùng được trên trang của em.</li>
+        <li><i>API restrictions</i>: chỉ chọn <b>Map Tiles API</b>.</li>
+      </ul>
+    </li>
+    <li>Vào <b>APIs &amp; Services → Map Tiles API → Quotas</b>, đặt giới hạn số lượt mỗi ngày (ví dụ 5.000) để không bao giờ vượt hạn mức miễn phí.</li>
+    <li>Mở <code>app.js</code>, dán mã khóa vào dòng <code>const GOOGLE_MAPS_KEY = "";</code> giữa hai dấu nháy.</li>
+  </ol>
+  <p class="tip">💡 Mã khóa Google sẽ nằm trong code công khai, ai cũng đọc được. Với bản đồ, chuyện này là <b>bình thường</b>: Google thiết kế mã khóa để dùng ở frontend. Chính bước 4 và 5 bảo vệ em: người khác lấy mã khóa cũng không dùng được trên trang của họ, và tổng số lượt bị chặn trần.</p>
+  <p>Khi dùng ảnh Google, góc dưới bản đồ phải hiện rõ dòng <b>"Google Maps"</b> kèm thông tin bản quyền ảnh. Trang tự lấy dòng này từ Google và hiển thị theo vùng đang xem.</p>
+
+  <h3>Chạy thử trên máy trước khi đưa lên mạng</h3>
+  <p>Nếu bấm đúp vào <code>index.html</code>, trang sẽ báo "Không tải được dữ liệu". Lý do: vì an toàn, trình duyệt <b>không cho một trang mở từ ổ cứng tự đọc các file khác</b> trên máy. Cần giả lập một máy chủ nhỏ:</p>
+  <ul>
+    <li><b>Cách dễ</b>: cài <a href="https://code.visualstudio.com/" target="_blank" rel="noopener">VS Code</a> và tiện ích <b>Live Server</b>. Bấm chuột phải vào <code>index.html</code> rồi chọn <b>Open with Live Server</b>.</li>
+    <li><b>Nếu máy có Python</b>: mở cửa sổ lệnh trong thư mục <code>site</code>, gõ <code>python -m http.server</code>, rồi mở <code>http://localhost:8000</code>.</li>
+  </ul>
+
+  <!-- 10 -->
+  <h2 id="chinh-sua"><span class="n">10</span>Thêm, sửa, xóa địa điểm</h2>
+  <p id="mo-rong">Ở cuối cột trái có nút <b>Đăng nhập chỉnh sửa</b>. Tài khoản minh họa là <code>admin</code>, mật khẩu <code>lichsu10</code>. Sau khi đăng nhập:</p>
+  <ul>
+    <li><b>+ Thêm địa điểm</b>: mở form điền thông tin. Nút <b>📍 Chọn vị trí trên bản đồ</b> cho phép bấm thẳng lên bản đồ để lấy tọa độ.</li>
+    <li>Mở một địa điểm bất kỳ sẽ thấy hai nút <b>Sửa</b> và <b>Xóa</b>.</li>
+    <li>Số thứ tự, ghim, vùng cụm và con số "di tích trong phường" đều <b>tự tính lại</b> ngay sau mỗi thay đổi.</li>
+  </ul>
+
+  <h3>Sửa xong thì dữ liệu nằm ở đâu?</h3>
+  <p>Trang này không có backend nên <b>không có nơi nào trên mạng để lưu</b>. Chỉnh sửa được cất trong <b>localStorage</b>, một ngăn nhỏ trong trình duyệt của <b>chính máy đang dùng</b>. Tắt máy mở lại vẫn còn, nhưng <b>người khác không thấy</b>. Vì vậy trang hiện dòng nhắc "Bản đồ đang dùng dữ liệu đã chỉnh sửa trên máy này", kèm nút <b>Khôi phục bản gốc</b>.</p>
+  <p>Muốn mọi người cùng thấy thay đổi:</p>
+  <ol class="steps">
+    <li>Bấm <b>Tải file JSON</b>. Máy tải về file <code>dia-diem.json</code> chứa toàn bộ dữ liệu mới.</li>
+    <li>Lên GitHub, vào thư mục <code>data</code> và tải file này lên đè file cũ (xem cách tải file ở mục 9).</li>
+    <li>Khoảng 1 phút sau, ai mở trang cũng thấy dữ liệu mới.</li>
+  </ol>
+  <figure>
+    <svg viewBox="0 0 720 150" role="img" aria-label="Luồng dữ liệu khi chỉnh sửa">
+      <defs><marker id="c" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#8f2d1f"/></marker></defs>
+      <g font-family="Be Vietnam Pro, sans-serif" font-size="14" text-anchor="middle" fill="#1e1a16">
+        <rect x="15" y="40" width="160" height="66" rx="10" fill="#f4efe6" stroke="#d9cfbe"/>
+        <text x="95" y="68" font-weight="600">Form chỉnh sửa</text><text x="95" y="88" font-size="12" fill="#5c5348">trên trình duyệt</text>
+        <rect x="280" y="40" width="160" height="66" rx="10" fill="#f4efe6" stroke="#d9cfbe"/>
+        <text x="360" y="68" font-weight="600">localStorage</text><text x="360" y="88" font-size="12" fill="#5c5348">chỉ máy này thấy</text>
+        <rect x="545" y="40" width="160" height="66" rx="10" fill="#f4efe6" stroke="#8f2d1f"/>
+        <text x="625" y="68" font-weight="600">GitHub</text><text x="625" y="88" font-size="12" fill="#5c5348">mọi người cùng thấy</text>
+        <path d="M175,73 L274,73" stroke="#8f2d1f" stroke-width="2" marker-end="url(#c)"/>
+        <text x="225" y="62" font-size="12" fill="#5c5348">Lưu</text>
+        <path d="M440,73 L539,73" stroke="#8f2d1f" stroke-width="2" stroke-dasharray="5 4" marker-end="url(#c)"/>
+        <text x="490" y="62" font-size="12" fill="#5c5348">Tải file JSON</text><text x="490" y="128" font-size="12" fill="#5c5348">rồi tải lên tay</text>
+      </g>
+    </svg>
+    <figcaption>Bước cuối làm bằng tay. Chính chỗ này, GitHub làm "người gác cổng" thật.</figcaption>
+  </figure>
+
+  <h3>Vì sao gọi là đăng nhập "minh họa"?</h3>
+  <p>Tên và mật khẩu được ghi ngay trong file <code>editor.js</code>. Mà file này, ai mở trang cũng <b>tải về máy mình</b> và đọc được: bấm chuột phải, chọn "Xem nguồn trang" là thấy. Giống như <b>khóa cửa rồi dán chìa khóa ngay trên cửa</b>.</p>
+  <p>Đăng nhập thật phải để <b>máy chủ (backend)</b> kiểm tra mật khẩu, vì người xem không đọc được code chạy trên máy chủ. Ở trang này, đăng nhập chỉ để <b>giấu các nút chỉnh sửa khỏi người xem thông thường</b>. Việc này không gây hại gì, vì sửa trên máy ai thì chỉ máy đó thấy. Người <b>thật sự</b> quyết định nội dung trên mạng là <b>chủ tài khoản GitHub</b>, vì chỉ họ mới tải file lên được.</p>
+  <div class="say"><p>“Đăng nhập trong trang em là đăng nhập minh họa, vì trang chỉ có frontend: mọi code đều gửi về máy người xem nên ai cũng đọc được mật khẩu. Đăng nhập thật cần backend kiểm tra trên máy chủ. Còn nội dung chính thức chỉ thay đổi khi em, chủ tài khoản GitHub, tải file mới lên.”</p></div>
+
+  <h3>Nếu muốn nhiều người cùng sửa và thấy ngay?</h3>
+  <p>Lúc đó mới cần backend và database thật. Cách nhanh nhất là dùng dịch vụ có sẵn như <b>Supabase</b> hoặc <b>Firebase</b> (có gói miễn phí). Các dịch vụ này cung cấp sẵn đăng nhập và cơ sở dữ liệu trên mạng, và frontend gọi tới chúng. Đây là hướng phát triển tiếp theo của dự án.</p>
+
+  <h3>Sửa trực tiếp file (không qua form)</h3>
+  <p>Vẫn có thể mở <code>data/dia-diem.json</code> bằng trình soạn thảo, sao chép một khối <code>{ … }</code> có sẵn rồi sửa nội dung (nhớ dấu phẩy giữa các khối). Ảnh mới thì chép vào thư mục <code>images/</code> và ghi tên file vào mục <code>anh</code>.</p>
+  <h3>Thêm phường khác</h3>
+  <p>Chạy lại công cụ cắt ranh giới với mã của phường mới, ví dụ <code>python tools/tach_ranh_gioi.py 26740 26743 26737</code> (26737 là Phường Tân Định).</p>
+
+  <!-- 11 -->
+  <h2 id="hoi-dap"><span class="n">11</span>Câu hỏi hay gặp khi thuyết trình</h2>
+  <details><summary>Trang này tốn bao nhiêu tiền?</summary><p>0 đồng. Leaflet, OpenStreetMap, GitHub Pages đều miễn phí. Chỉ tốn tiền nếu muốn mua tên miền riêng.</p></details>
+  <details><summary>Trang có đăng nhập, vậy có bảo mật không?</summary><p>Không. Đó là đăng nhập minh họa, mật khẩu nằm trong code mà ai cũng đọc được (xem mục 10). Bảo mật thật cần backend. Nội dung chính thức được bảo vệ bởi tài khoản GitHub của em.</p></details>
+  <details><summary>Có cần database không? Dữ liệu lưu ở đâu?</summary><p>Không cần. Dữ liệu nằm trong file <code>dia-diem.json</code>. Database chỉ cần khi người dùng gửi dữ liệu lên (đăng nhập, bình luận). Trang này chỉ để đọc.</p></details>
+  <details><summary>Nếu nhiều người vào cùng lúc thì có bị sập không?</summary><p>Rất khó sập. Máy chủ chỉ gửi file có sẵn, không phải tính toán gì. GitHub còn dùng mạng phân phối nội dung (CDN): nhiều máy chủ đặt khắp thế giới, người xem ở đâu thì nhận file từ máy chủ gần nhất.</p></details>
+  <details><summary>Làm sao biết di tích nào thuộc phường nào?</summary><p>Máy tự kiểm tra bằng thuật toán tia sáng (mục 7), so tọa độ di tích với đường viền phường trong dữ liệu địa giới hành chính chính thức năm 2025.</p></details>
+  <details><summary>Ảnh có vi phạm bản quyền không?</summary><p>Không. Ảnh xưa đã hết bản quyền. Ảnh nay dùng giấy phép Creative Commons, và trang có ghi đầy đủ tác giả, giấy phép dưới từng ảnh.</p></details>
+  <details><summary>Nội dung lịch sử lấy từ đâu? Có chính xác không?</summary><p>Tổng hợp từ tài liệu tìm hiểu của nhóm, Wikipedia và giới thiệu chính thức của các di tích. Các mốc quan trọng đều kiểm chứng được trong sách giáo khoa và trang chính thức của di tích. Tọa độ quán ăn là gần đúng.</p></details>
+  <details><summary>Sao em không dùng Google Maps?</summary><p>Google Maps cần đăng ký thẻ thanh toán và có thể tính phí. Leaflet + OpenStreetMap miễn phí, mã nguồn mở, và cho tự do chỉnh màu bản đồ theo phong cách di sản.</p></details>
+  <details><summary>Sao gõ không dấu “dinh doc lap” vẫn tìm ra “Dinh Độc Lập”?</summary><p>Máy tính lưu chữ “ộ” thành 3 phần: chữ “o”, dấu mũ và dấu nặng. Trước khi so sánh, code tách chữ ra như vậy (lệnh <code>normalize("NFD")</code>), xóa hết các dấu, đổi “đ” thành “d”, rồi viết thường toàn bộ. Cả tên địa điểm lẫn chữ em gõ đều được “bỏ dấu” theo cùng một cách nên khớp nhau. Kết quả khớp theo tên được xếp trước kết quả chỉ khớp theo địa chỉ.</p></details>
+  <details><summary>Em có tự viết hết code không?</summary><p>Hãy trả lời trung thực. Ví dụ: "Em được hỗ trợ dựng khung và dùng thư viện Leaflet có sẵn. Phần em làm là tìm hiểu, chọn lọc nội dung lịch sử, kiểm tra dữ liệu và hiểu cách trang hoạt động để trình bày lại." Hiểu và giải thích được mới là điều quan trọng.</p></details>
+
+  <!-- 12 -->
+  <h2 id="thuat-ngu"><span class="n">12</span>Bảng thuật ngữ</h2>
+  <dl class="gloss">
+    <dt>Frontend</dt><dd>Phần giao diện, chạy trên trình duyệt của người xem.</dd>
+    <dt>Backend</dt><dd>Phần xử lý chạy trên máy chủ (trang này không có).</dd>
+    <dt>Database</dt><dd>Cơ sở dữ liệu, nơi lưu dữ liệu thay đổi liên tục (trang này không có).</dd>
+    <dt>Trang tĩnh</dt><dd>Trang chỉ gồm file có sẵn, ai xem cũng nhận cùng một nội dung.</dd>
+    <dt>HTML / CSS / JS</dt><dd>Khung / trang trí / hành động của trang web.</dd>
+    <dt>Thư viện</dt><dd>Đoạn code có sẵn do người khác viết, mình dùng lại (ví dụ Leaflet).</dd>
+    <dt>JSON</dt><dd>Cách viết dữ liệu có cấu trúc, người và máy đều đọc được.</dd>
+    <dt>GeoJSON</dt><dd>JSON dành riêng cho dữ liệu bản đồ: điểm, đường, vùng.</dd>
+    <dt>Tile</dt><dd>Ô ảnh vuông nhỏ ghép thành bản đồ nền.</dd>
+    <dt>Tọa độ</dt><dd>Cặp vĩ độ, kinh độ xác định một vị trí trên Trái Đất.</dd>
+    <dt>Thuật toán</dt><dd>Các bước rõ ràng để giải một bài toán (ví dụ: tia sáng).</dd>
+    <dt>Tên miền</dt><dd>Tên dễ nhớ của trang web, ví dụ <code>github.io</code>.</dd>
+    <dt>Địa chỉ IP</dt><dd>Địa chỉ dạng số của một máy trên Internet.</dd>
+    <dt>DNS</dt><dd>"Danh bạ" đổi tên miền thành địa chỉ IP.</dd>
+    <dt>Hosting</dt><dd>Dịch vụ cho "thuê chỗ" trên máy chủ để đặt trang web.</dd>
+    <dt>Deploy</dt><dd>Triển khai: đưa trang web lên máy chủ.</dd>
+    <dt>HTTPS</dt><dd>Kết nối được mã hóa (biểu tượng ổ khóa).</dd>
+    <dt>CDN</dt><dd>Mạng nhiều máy chủ khắp thế giới, giúp tải trang nhanh hơn.</dd>
+    <dt>localStorage</dt><dd>Ngăn lưu trữ nhỏ trong trình duyệt, chỉ máy đó dùng được.</dd>
+    <dt>Bao lồi</dt><dd>Hình nhỏ nhất ôm trọn một nhóm điểm, như sợi dây thun căng quanh các cây đinh.</dd>
+    <dt>SVG</dt><dd>Hình vẽ bằng công thức toán học, phóng to không bị vỡ.</dd>
+    <dt>Responsive</dt><dd>Giao diện tự thích ứng với kích thước màn hình.</dd>
+    <dt>Mã nguồn mở</dt><dd>Phần mềm công khai code, ai cũng được dùng và góp sức.</dd>
+  </dl>
+
+</div>
+</body>
+</html>
