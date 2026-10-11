@@ -39,15 +39,28 @@ for f in NGUON.glob("*.json"):
     danh_sach.append({
         "id": m["id"],
         "thu_tu": m.get("num", 0),
+        "ke_tiep": m.get("next_photo_id"),
+        "dau_tien": m.get("first_photo_id"),
         "chu_thich": (m.get("caption") or "").strip(),
         "ngay_dang": (m.get("date") or "")[:10],
         "rong": rong,
         "cao": cao,
     })
 
-danh_sach.sort(key=lambda a: a["thu_tu"])
+# Sắp theo thứ tự album: đi từ ảnh đầu tiên theo "ảnh kế tiếp" (next_photo_id).
+# Không dùng "num" vì tải tiếp từ giữa album thì gallery-dl đánh số lại từ 1.
+theo_id = {a["id"]: a for a in danh_sach}
+dau = next((a["dau_tien"] for a in danh_sach if a["dau_tien"] in theo_id), None)
+thu_tu, da_xep = [], set()
+while dau in theo_id and dau not in da_xep:
+    thu_tu.append(theo_id[dau])
+    da_xep.add(dau)
+    dau = theo_id[dau]["ke_tiep"]
+# Ảnh nằm sau một chỗ đứt chuỗi (chưa tải đủ) thì xếp cuối, theo num
+thu_tu += sorted((a for a in danh_sach if a["id"] not in da_xep), key=lambda a: a["thu_tu"])
+danh_sach = thu_tu
 for a in danh_sach:
-    del a["thu_tu"]
+    del a["thu_tu"], a["ke_tiep"], a["dau_tien"]
 
 du_lieu = {
     "nguon": {

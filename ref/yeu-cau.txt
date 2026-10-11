@@ -13,3 +13,8 @@ Yêu cầu:
 carto key
 cb1_4g1n_1_d062cb4a59b8fad6d39dd8c3
 
+gallery-dl --cookies "D:\PhucLam\fb-cookies.txt" --write-metadata --sleep-request 2-4 -D "D:\PhucLam\fb-album" "https://www.facebook.com/media/set/?set=a.1362559783811378&type=3"
+
+gallery-dl --cookies "D:\PhucLam\fb-cookies.txt" --write-metadata --sleep-request 2-4 -D "D:\PhucLam\fb-album" "https://www.facebook.com/media/set/?set=a.1362559783811378"
+
+gallery-dl --cookies "D:\PhucLam\fb-cookies.txt" --write-metadata --sleep-request 2-4 -D "D:\PhucLam\fb-album" "https://www.facebook.com/photo/?fbid=2267607896639891&set=a.1362559783811378&setextract"
