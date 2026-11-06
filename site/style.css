@@ -80,6 +80,27 @@ a { color: var(--son); }
 }
 .album-link:hover { border-color: var(--son); }
 
+.tu-lieu { margin-top: 18px; }
+.tu-lieu-title {
+  margin: 0 0 6px;
+  font-size: 11px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--dong);
+  font-weight: 600;
+}
+.tu-lieu ul { margin: 0; padding: 0; list-style: none; }
+.tu-lieu li + li { margin-top: 4px; }
+.tu-lieu a {
+  color: var(--son);
+  font-family: var(--serif);
+  font-size: 15px;
+  font-weight: 500;
+  text-decoration: none;
+}
+.tu-lieu a::after { content: " ›"; }
+.tu-lieu a:hover { text-decoration: underline; }
+
 .stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
